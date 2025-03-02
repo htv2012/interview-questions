@@ -1,0 +1,20 @@
+import sconstools
+
+env = sconstools.gtestEnvironment(
+    LIBS=['putlong'], 
+    CPPPATH=['#src'], 
+    LIBPATH=['#src'])
+env.MergeFlags(sconstools.getCommonFlags())
+env.Program('PutlongTest', 'PutlongTest.cpp')
+env.Program('putlong_runner', 'putlong_runner.c')
+
+# If the user add command line argument: cmocka=1
+# Then we build the cmocka_test
+if ARGUMENTS.get('cmocka', 0):
+    cmocka_env = Environment(
+        CCFLAGS=['-ggdb', '-Wall'],
+        LIBS=['putlong', 'cmocka'],
+        CPPPATH=['#src'],
+        LIBPATH=['#src']
+    )
+    cmocka_env.Program('cmocka_test', 'cmocka_test.c')

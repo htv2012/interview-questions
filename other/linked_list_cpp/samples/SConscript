@@ -1,0 +1,10 @@
+import sconstools
+
+flags = sconstools.getCommonFlags()
+env = Environment(
+    CPPPATH=['#src'],
+    LIBPATH=['#src'],
+    LIBS=['List'],
+    **flags)
+env.Program('std_list_iterator', 'std_list_iterator.cpp')
+env.Program('iterator_example', 'iterator_example.cpp')

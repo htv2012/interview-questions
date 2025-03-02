@@ -1,0 +1,5 @@
+import sconstools
+
+flags = sconstools.getCommonFlags()
+env = Environment(**flags)
+env.Library(target='StringReverse', source=Glob('*.cpp'))

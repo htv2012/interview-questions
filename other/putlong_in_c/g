@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TEST_APP=./PutlongTest
+if [[ $TERM = "cygwin" ]]
+then
+	SCONS=scons.py
+else
+	SCONS=scons
+fi
+
+$SCONS && ( cd tests && $TEST_APP "$@" )

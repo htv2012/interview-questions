@@ -1,0 +1,6 @@
+import sconstools
+
+src = Glob('*.cpp')
+flags = sconstools.getCommonFlags()
+env = Environment(**flags)
+env.Library(target='List', source=src)

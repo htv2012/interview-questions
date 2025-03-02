@@ -1,0 +1,9 @@
+import sconstools
+
+env = sconstools.gtestEnvironment(
+    LIBS=['SqueezeSpaces'], 
+    CPPPATH=['#src'], 
+    LIBPATH=['#src'])
+env.MergeFlags(sconstools.getCommonFlags())
+env.Program('SqueezeSpacesTest', 'SqueezeSpacesTest.cpp')
+

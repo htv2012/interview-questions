@@ -1,0 +1,9 @@
+import sconstools
+
+env = sconstools.gtestEnvironment(
+    LIBS=['StringReverse'], 
+    CPPPATH=['#src'], 
+    LIBPATH=['#src'])
+env.MergeFlags(sconstools.getCommonFlags())
+env.Program('StringReverseTest', 'StringReverseTest.cpp')
+

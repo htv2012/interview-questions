@@ -1,0 +1,12 @@
+#!/bin/bash
+clear
+
+TEST_APP=./linked_list_tests
+if [[ $TERM = "cygwin" ]]
+then
+	SCONS=scons.py
+else
+	SCONS=scons
+fi
+
+$SCONS && ( cd tests && test -e $TEST_APP && $TEST_APP "$@" )

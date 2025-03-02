@@ -1,0 +1,3 @@
+SConscript('src/SConscript')
+SConscript('tests/SConscript')
+SConscript('cxxtest/SConscript')

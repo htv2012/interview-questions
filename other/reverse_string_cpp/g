@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TEST_APP=tests/StringReverseTest
+if [[ $TERM = "cygwin" ]]
+then
+	SCONS=scons.py
+else
+	SCONS=scons
+fi
+
+$SCONS && $TEST_APP "$@" 

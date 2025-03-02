@@ -1,0 +1,9 @@
+
+env = Environment(
+    LIBS=['putlong'],
+    CPPPATH=['#src'],
+    LIBPATH=['#src']
+)
+
+env.Program('putlong_tryout', source=['putlong_tryout.c'])
+env.Program('putlong_pipe', source=['putlong_pipe.c'])

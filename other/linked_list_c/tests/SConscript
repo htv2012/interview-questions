@@ -1,0 +1,8 @@
+import sconstools
+
+env = sconstools.gtestEnvironment(
+    LIBS=['linkedlist'],
+    CPPPATH=['#src'],
+    LIBPATH=['#src']
+)
+env.Program('linked_list_tests', Glob('*.cpp'))

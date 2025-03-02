@@ -1,0 +1,5 @@
+not_fired = '.'
+missed = '-'
+hit = 'x'
+sunk = 'X'
+hit_again = 'fired here before'

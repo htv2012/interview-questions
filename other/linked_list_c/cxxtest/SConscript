@@ -1,0 +1,10 @@
+env = Environment(
+    tools=['default', 'cxxtest'],
+    LIBS=['linkedlist'],
+    CPPPATH=['#src'],
+    LIBPATH=['#src']
+)
+
+sources = Glob('*.t.h')
+sources += Glob('common.cpp')
+env.CxxTest('linked_list_test', sources)

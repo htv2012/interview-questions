@@ -1,0 +1,6 @@
+import sconstools
+
+src = Glob('*.c')
+flags = sconstools.getCommonFlags()
+env = Environment(**flags)
+env.Library(target='putlong', source=src)
