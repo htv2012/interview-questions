@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+log_cli="true"
+log_level="WARN"
+log_format="%(levelname)-8s %(funcName)-16s %(message)s"
+markers=["slow"]

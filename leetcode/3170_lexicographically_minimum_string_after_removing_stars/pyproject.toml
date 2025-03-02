@@ -1,0 +1,20 @@
+[project]
+name = "l3170"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.pytest.ini_options]
+log_cli="true"
+log_level="DEBUG"
+markers=["slow"]
+timeout = 10
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+    "pytest-timeout>=2.3.1",
+    "ruff>=0.9.8",
+]

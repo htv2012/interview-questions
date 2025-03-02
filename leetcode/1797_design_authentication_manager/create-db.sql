@@ -1,0 +1,7 @@
+CREATE TABLE entry (shop INTEGER, movie INTEGER, price INTEGER, rented INTEGER);
+INSERT INTO entry VALUES (0, 1, 5, 0);
+INSERT INTO entry VALUES (0, 2, 6, 0);
+INSERT INTO entry VALUES (0, 3, 7, 0);
+INSERT INTO entry VALUES (1, 1, 4, 0);
+INSERT INTO entry VALUES (1, 2, 7, 0);
+INSERT INTO entry VALUES (2, 1, 5, 0);

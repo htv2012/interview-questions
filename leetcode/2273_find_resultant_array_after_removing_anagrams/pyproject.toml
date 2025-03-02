@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+log_cli="true"
+log_level="CRITICAL"
+markers=["slow"]
