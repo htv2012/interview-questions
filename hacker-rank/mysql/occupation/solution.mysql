@@ -1,0 +1,35 @@
+/*
+https://www.hackerrank.com/challenges/the-pads/problem?isFullScreen=true
+*/
+
+set @doc = 0;
+set @sing = 0;
+set @prof = 0;
+set @act = 0;
+
+select
+    min(Doctor) as Doctor
+    , min(Singer) as Singer
+    , min(Professor) as Professor
+    , min(Actor) as Actor
+from (
+    select
+        case
+            when Occupation = 'Doctor' then (@doc := @doc + 1)
+            when Occupation = 'Singer' then (@sing := @sing + 1)
+            when Occupation = 'Professor' then (@prof := @prof + 1)
+            when Occupation = 'Actor' then (@act := @act + 1)
+        end as Serial
+        , if(Occupation = 'Doctor', Name, NULL) as Doctor
+        , if(Occupation = 'Singer', Name, NULL) as Singer
+        , if(Occupation = 'Professor', Name, NULL) as Professor
+        , if(Occupation = 'Actor', Name, NULL) as Actor
+    from
+        OCCUPATIONS
+    order by
+        Name
+) IntermediateTable
+group by
+    Serial
+;
+

@@ -1,0 +1,22 @@
+drop database if exists occupation;
+
+create database occupation;
+use occupation;
+
+create table occupations (
+    Name VARCHAR(25),
+    Occupation VARCHAR(25)
+);
+
+insert into occupations (Name, Occupation)
+values
+    ('Samantha', 'Doctor'),
+    ('Julia', 'Actor'),
+    ('Maria', 'Actor'),
+    ('Meena', 'Singer'),
+    ('Ashley', 'Professor'),
+    ('Ketty', 'Professor'),
+    ('Christeen', 'Professor'),
+    ('Jane', 'Actor'),
+    ('Jenny', 'Doctor'),
+    ('Priya', 'Singer');

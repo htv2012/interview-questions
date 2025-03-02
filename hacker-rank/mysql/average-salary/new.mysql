@@ -1,0 +1,18 @@
+drop database if exists SalaryDB;
+
+create database SalaryDB;
+use SalaryDB;
+
+create table employees (
+    id int,
+    name varchar(25),
+    salary int
+);
+
+insert into employees (id, name, salary)
+values
+    (1, 'Kristeen', 1420)
+    , (2, 'Ashley', 2006)
+    , (3, 'Julia', 2210)
+    , (4, 'Maria', 3000)
+;
