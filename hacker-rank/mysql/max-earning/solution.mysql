@@ -1,0 +1,16 @@
+/*
+https://www.hackerrank.com/challenges/earnings-of-employees/problem?isFullScreen=true
+*/
+
+select
+    max(months * salary) as max_earning, count(employee_id) as employee_count 
+from
+    Employee
+where (months * salary) = (
+    select
+        max(months * salary) as max_earning
+    from
+        Employee
+)
+;
+
