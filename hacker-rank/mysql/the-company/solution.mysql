@@ -3,8 +3,10 @@ https://www.hackerrank.com/challenges/the-company/problem?isFullScreen=true
 */
 
 select
+    company_code,
+    founder,
+    count(lead_manager_code)
 from
     Company
-where
 ;
 

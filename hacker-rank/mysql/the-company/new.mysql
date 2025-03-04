@@ -4,10 +4,48 @@ create database CompanyDB;
 use CompanyDB;
 
 create table Company (
-    -- Add fields here
+    company_code varchar(20),
+    founder varchar(20)
 );
 
-insert into Company ()
-values
-    -- Add values here
-;
+create table Lead_Manager (
+    lead_manager_code varchar(20),
+    company_code varchar(20)
+);
+
+create table Senior_Manager (
+    senior_manager_code varchar(20),
+    lead_manager_code varchar(20),
+    company_code varchar(20)
+);
+
+create table Manager (
+    manager_code varchar(20),
+    senior_manager_code varchar(20),
+    lead_manager_code varchar(20),
+    company_code varchar(20)
+);
+
+create table Employee (
+    employee_code varchar(20),
+    manager_code varchar(20),
+    senior_manager_code varchar(20),
+    lead_manager_code varchar(20),
+    company_code varchar(20)
+);
+
+insert into Company values ('C1', 'Monika');
+insert into Company values ('C2', 'Samantha');
+insert into Lead_Manager values ('LM1', 'C1');
+insert into Lead_Manager values ('LM2', 'C2');
+insert into Senior_Manager values ('SM1', 'LM1', 'C1');
+insert into Senior_Manager values ('SM2', 'LM1', 'C1');
+insert into Senior_Manager values ('SM3', 'LM2', 'C2');
+insert into Manager values ('M1', 'SM1', 'LM1', 'C1');
+insert into Manager values ('M2', 'SM3', 'LM2', 'C2');
+insert into Manager values ('M3', 'SM3', 'LM2', 'C2');
+insert into Employee values ('E1', 'M1', 'SM1', 'LM1', 'C1'); 
+insert into Employee values ('E2', 'M1', 'SM1', 'LM1', 'C1');
+insert into Employee values ('E3', 'M2', 'SM3', 'LM2', 'C2');
+insert into Employee values ('E4', 'M3', 'SM3', 'LM2', 'C2');
+
