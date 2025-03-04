@@ -1,3 +1,7 @@
+### Create a new directory
+new:
+	copier copy .template .
+
 shell:
 	bin/shell.sh
 
