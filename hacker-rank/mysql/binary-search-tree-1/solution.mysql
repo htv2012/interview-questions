@@ -1,0 +1,21 @@
+/*
+https://www.hackerrank.com/challenges/binary-search-tree-1/problem?isFullScreen=true
+*/
+
+select
+    n as node,
+    if(
+        p is null,
+        'Root',
+        if(
+            (select count(n) from BST where p = node) = 0,
+            'Leaf',
+            'Inner'
+        )
+    ) as 'node_type'
+from
+    BST
+order by
+    n asc
+;
+

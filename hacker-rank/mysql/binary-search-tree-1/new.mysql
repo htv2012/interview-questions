@@ -1,0 +1,20 @@
+drop database if exists BST1DB;
+
+create database BST1DB;
+use BST1DB;
+
+create table BST (
+    n int,
+    p int
+);
+
+insert into BST (n, p)
+values
+    (1, 2),
+    (3, 2),
+    (6, 8),
+    (9, 8),
+    (2, 5),
+    (8, 5),
+    (5, null)
+;
