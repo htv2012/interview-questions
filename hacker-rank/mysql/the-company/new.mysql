@@ -1,0 +1,13 @@
+drop database if exists CompanyDB;
+
+create database CompanyDB;
+use CompanyDB;
+
+create table Company (
+    -- Add fields here
+);
+
+insert into Company ()
+values
+    -- Add values here
+;
