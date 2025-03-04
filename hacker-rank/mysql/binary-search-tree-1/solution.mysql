@@ -4,15 +4,11 @@ https://www.hackerrank.com/challenges/binary-search-tree-1/problem?isFullScreen=
 
 select
     n as node,
-    if(
-        p is null,
-        'Root',
-        if(
-            (select count(n) from BST where p = node) = 0,
-            'Leaf',
-            'Inner'
-        )
-    ) as 'node_type'
+    case
+        when p is null then 'Root'
+        when (select count(n) from BST where p = node) = 0 then 'Leaf'
+        else 'Inner'
+    end as 'node_type'
 from
     BST
 order by
