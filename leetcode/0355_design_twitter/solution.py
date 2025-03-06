@@ -45,8 +45,6 @@ UNFOLLOW = "DELETE FROM follow WHERE followerId=? AND followeeId=?"
 
 class Twitter:
     def __init__(self):
-        # TODO: Replace with in-memory database
-        # self.db = sqlite3.connect("/tmp/twitter.sqlite3")
         self.db = sqlite3.connect(":memory:")
         self.db.execute(CREATE_POST_TABLE)
         self.db.execute(CREATE_FOLLOW_TABLE)
