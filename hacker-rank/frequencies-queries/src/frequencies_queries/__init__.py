@@ -19,4 +19,4 @@ class DB:
         return frequency in self.freq.values()
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(freq={self.freq!r}, values={self.values!r})"
+        return f"{self.__class__.__name__}(freq={self.freq!r})"
