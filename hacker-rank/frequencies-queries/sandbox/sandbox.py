@@ -15,13 +15,7 @@ def _():
             self.el = {}
 
         def __repr__(self):
-            return (
-                f"{self.__class__.__name__}("
-                f"freq={self.freq}"
-                f", "
-                f"el={self.el}"
-                f")"
-            )
+            return f"{self.__class__.__name__}(freq={self.freq}, el={self.el})"
 
         def append(self, value):
             current_freq = self.freq.get(value, 0)
@@ -53,6 +47,7 @@ def _():
         def __contains__(self, frequency):
             """Return True if frequency is found here"""
             return frequency in self.el and self.el[frequency]
+
     return Freq, collections, dataclasses
 
 
@@ -69,6 +64,7 @@ def _(freq):
         for v in [25, 37, 49, 25, 25]:
             f.append(v)
             print(f"append {v} => {f}")
+
     try_append(freq)
     return (try_append,)
 
@@ -78,6 +74,7 @@ def _(freq):
     def try_query(f):
         for i in range(5):
             print(f"Query {i} => {i in f}")
+
     try_query(freq)
     return (try_query,)
 
@@ -88,6 +85,7 @@ def _(freq):
         for v in [-9, 25, 37]:
             f.remove(v)
             print(f"Remove {v} => {f}")
+
     try_remove(freq)
     return (try_remove,)
 
