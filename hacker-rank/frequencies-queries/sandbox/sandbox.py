@@ -47,7 +47,6 @@ def _():
         def __contains__(self, frequency):
             """Return True if frequency is found here"""
             return frequency in self.el and self.el[frequency]
-
     return Freq, collections, dataclasses
 
 
@@ -100,6 +99,67 @@ def _(freq):
 def _(freq):
     freq.remove(49)
     freq
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""# Different Approach""")
+    return
+
+
+@app.cell
+def _():
+    # a=value -> count, b=count -> values
+    a = {}
+    b = {}
+    return a, b
+
+
+@app.cell
+def _(a, b):
+    # Add 1000
+    a[1000] = 1
+    b[1] = 1
+    return
+
+
+@app.cell
+def _(a, b):
+    # add 2000
+    a[2000] = 1
+    b[1] = 2
+    return
+
+
+@app.cell
+def _(a, b):
+    # add 1000
+    a[1000] = 2
+    b[1] -= 1
+    b[2] = 1
+    a,b
+    return
+
+
+@app.cell
+def _(a, b):
+    # remove 1000
+    a[1000] -= 1
+    del b[2]
+    b[1] = 2
+    (a, b)
     return
 
 
