@@ -37,4 +37,3 @@ def test_remove(db):
     assert db.query_frequency(2) is False
     assert db.query_frequency(1) is True
     assert db.query_frequency(3) is True
-    
