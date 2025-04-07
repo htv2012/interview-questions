@@ -1,15 +1,12 @@
-import string
+from string import ascii_lowercase, ascii_uppercase
 
 
 def translate(inchar: str, k: int):
-    if inchar in string.ascii_lowercase:
-        band = string.ascii_lowercase
-    elif inchar in string.ascii_uppercase:
-        band = string.ascii_uppercase
-    else:
-        return inchar
-
-    return band[(band.index(inchar) + k) % len(band)]
+    for band in [ascii_lowercase, ascii_uppercase]:
+        if inchar in band:
+            index = (band.index(inchar) + k) % len(band)
+            return band[index]
+    return inchar
 
 
 def caesarCipher(s, k):
