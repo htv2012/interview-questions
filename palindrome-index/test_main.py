@@ -9,7 +9,7 @@ from main import is_palidromic, palindromeIndex
         pytest.param("bcbc", 0, id="example"),
         pytest.param("abxba", 2, id="palidromic_odd_length"),
         pytest.param("aa", -1, id="palidromic_even_length"),
-        pytest.param("aax", 2, id="lastchar"),
+        pytest.param("aax", 2, id="remove_last_char"),
         pytest.param("abcdefcba", -1, id="palidromic_to_middle"),
     ],
 )
