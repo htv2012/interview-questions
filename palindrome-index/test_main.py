@@ -7,10 +7,13 @@ from main import is_palidromic, palindromeIndex
     ["s", "expected"],
     [
         pytest.param("bcbc", 0, id="example"),
-        pytest.param("abxba", 2, id="palidromic_odd_length"),
+        pytest.param("abxba", -1, id="palidromic_odd_length"),
         pytest.param("aa", -1, id="palidromic_even_length"),
         pytest.param("aax", 2, id="remove_last_char"),
         pytest.param("abcdefcba", -1, id="palidromic_to_middle"),
+        pytest.param("aaab", 3, id="case0-a"),
+        pytest.param("baa", 0, id="case0-b"),
+        pytest.param("aaa", -1, id="case0-c"),
     ],
 )
 def test_palindromeIndex(s, expected, capfd):

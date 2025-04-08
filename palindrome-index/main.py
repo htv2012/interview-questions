@@ -12,13 +12,10 @@ def palindromeIndex(s):
     left, right = 0, len(s) - 1
     while left < right and s[left] == s[right]:
         left, right = left + 1, right - 1
-    if left == right:
-        # String is palindromic, len is odd,
-        # remove the middle char and it is also palindromic
-        return left
-    if left > right:
-        # String is palindromic, len is even
-        # So we cannot remove any char to make it palindromic again
+
+    if left >= right:
+        # String is palindromic, and the prolem statement
+        # said to return -1
         return -1
 
     if is_palidromic(s, left + 1, right):
