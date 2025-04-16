@@ -15,13 +15,7 @@ def _():
             self.el = {}
 
         def __repr__(self):
-            return (
-                f"{self.__class__.__name__}("
-                f"freq={self.freq}"
-                f", "
-                f"el={self.el}"
-                f")"
-            )
+            return f"{self.__class__.__name__}(freq={self.freq}, el={self.el})"
 
         def append(self, value):
             current_freq = self.freq.get(value, 0)
@@ -69,6 +63,7 @@ def _(freq):
         for v in [25, 37, 49, 25, 25]:
             f.append(v)
             print(f"append {v} => {f}")
+
     try_append(freq)
     return (try_append,)
 
@@ -78,6 +73,7 @@ def _(freq):
     def try_query(f):
         for i in range(5):
             print(f"Query {i} => {i in f}")
+
     try_query(freq)
     return (try_query,)
 
@@ -88,6 +84,7 @@ def _(freq):
         for v in [-9, 25, 37]:
             f.remove(v)
             print(f"Remove {v} => {f}")
+
     try_remove(freq)
     return (try_remove,)
 
@@ -102,6 +99,67 @@ def _(freq):
 def _(freq):
     freq.remove(49)
     freq
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""# Different Approach""")
+    return
+
+
+@app.cell
+def _():
+    # a=value -> count, b=count -> values
+    a = {}
+    b = {}
+    return a, b
+
+
+@app.cell
+def _(a, b):
+    # Add 1000
+    a[1000] = 1
+    b[1] = 1
+    return
+
+
+@app.cell
+def _(a, b):
+    # add 2000
+    a[2000] = 1
+    b[1] = 2
+    return
+
+
+@app.cell
+def _(a, b):
+    # add 1000
+    a[1000] = 2
+    b[1] -= 1
+    b[2] = 1
+    a,b
+    return
+
+
+@app.cell
+def _(a, b):
+    # remove 1000
+    a[1000] -= 1
+    del b[2]
+    b[1] = 2
+    (a, b)
     return
 
 
