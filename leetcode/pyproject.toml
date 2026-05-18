@@ -1,0 +1,16 @@
+[project]
+name = "leetcode"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "graphviz>=0.21",
+    "ipython>=9.13.0",
+    "jupyterlab>=4.5.7",
+    "pytest>=9.0.3",
+    "ruff>=0.15.13",
+]
