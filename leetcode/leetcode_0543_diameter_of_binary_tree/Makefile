@@ -18,7 +18,7 @@ run: lint
 
 ### Run unit tests
 test: lint
-	uv run pytest -s -v --log-cli-level=DEBUG
+	uv run pytest -s -v --log-cli-level=WARN
 
 ### Clean up generated files
 clean:

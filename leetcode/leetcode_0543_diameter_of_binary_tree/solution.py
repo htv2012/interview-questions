@@ -48,13 +48,22 @@ def breadth_first_build(seq):
     return root
 
 
-def diameter(t: TreeNode) -> int:
+def max_depth(t: TreeNode) -> int:
     if t is None:
         res = -1
     elif t.left is None and t.right is None:
         res = 0
     else:
-        res = 2 + diameter(t.left) + diameter(t.right)
+        res = 1 + max(max_depth(t.left), max_depth(t.right))
+    logger.debug(f"hei({t}) -> {res}")
+    return res
+
+
+def diameter(t: TreeNode) -> int:
+    if t is None:
+        res = -1
+    else:
+        res = 2 + max_depth(t.left) + max_depth(t.right)
     logger.debug(f"dia({t}) -> {res}")
     return res
 
