@@ -67,6 +67,7 @@ def diameter(t: TreeNode) -> int:
     logger.debug(f"dia({t}) -> {res}")
     return res
 
+# TODO: Find max diameter
 
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
