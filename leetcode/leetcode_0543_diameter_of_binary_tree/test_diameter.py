@@ -2,10 +2,12 @@ import itertools
 
 import pytest
 
-from solution import breadth_first_build, diameter_of_binary_tree
+from solution import diameter_of_binary_tree
+from tree import breadth_first_build
 
 
 def right_skewed(n: int):
+    """Return a sequence which produces a right-skewed tree."""
     seq = itertools.chain.from_iterable(zip(range(n), itertools.repeat(None)))
     return seq
 
