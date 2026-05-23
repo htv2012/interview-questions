@@ -5,10 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
+
 [tool.pytest.ini_options]
 log_cli="true"
 log_level="DEBUG"
-markers=["slow"]
 
 [dependency-groups]
 dev = [
