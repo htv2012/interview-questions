@@ -14,3 +14,8 @@ dependencies = [
     "pytest-pythonpath>=0.7.3",
     "ruff>=0.15.13",
 ]
+
+[dependency-groups]
+dev = [
+    "ty>=0.0.39",
+]

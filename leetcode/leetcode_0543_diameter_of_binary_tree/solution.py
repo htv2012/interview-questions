@@ -3,11 +3,17 @@
 https://leetcode.com/problems/diameter-of-binary-tree/?envType=daily-question&envId=2024-03-13
 """
 
+import enum
 import itertools
 import logging
 from typing import Optional
 
 logger = logging.getLogger()
+
+
+class VisitState(enum.Enum):
+    VISITED = enum.auto()
+    NOT_VISITED = enum.auto()
 
 
 class TreeNode:
@@ -50,21 +56,23 @@ def breadth_first_build(seq):
 
 def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
     diameter = 0
+    height = {None: 0}  # node: height
+    stack = [(root, VisitState.NOT_VISITED)]  # [(node, visited_state)]
 
-    def dfs(node: Optional[TreeNode]) -> int:
-        """Return the height."""
-        nonlocal diameter
-
+    while stack:
+        node, visited = stack.pop()
         if node is None:
-            return 0
+            continue
+        if visited == VisitState.NOT_VISITED:
+            stack.append((node, VisitState.VISITED))
+            stack.append((node.left, VisitState.NOT_VISITED))
+            stack.append((node.right, VisitState.NOT_VISITED))
+        else:
+            left_height = height[node.left]
+            right_height = height[node.right]
+            height[node] = 1 + max(left_height, right_height)
+            diameter = max(diameter, left_height + right_height)
 
-        left_height = dfs(node.left)
-        right_height = dfs(node.right)
-        diameter = max(diameter, left_height + right_height)
-
-        return 1 + max(left_height, right_height)
-
-    dfs(root)
     return diameter
 
 
