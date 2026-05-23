@@ -48,27 +48,26 @@ def breadth_first_build(seq):
     return root
 
 
-def max_depth(t: TreeNode) -> int:
-    if t is None:
-        res = -1
-    elif t.left is None and t.right is None:
-        res = 0
-    else:
-        res = 1 + max(max_depth(t.left), max_depth(t.right))
-    logger.debug(f"hei({t}) -> {res}")
-    return res
+def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
+    diameter = 0
 
+    def dfs(node: Optional[TreeNode]) -> int:
+        """Return the height."""
+        nonlocal diameter
 
-def diameter(t: TreeNode) -> int:
-    if t is None:
-        res = -1
-    else:
-        res = 2 + max_depth(t.left) + max_depth(t.right)
-    logger.debug(f"dia({t}) -> {res}")
-    return res
+        if node is None:
+            return 0
 
-# TODO: Find max diameter
+        left_height = dfs(node.left)
+        right_height = dfs(node.right)
+        diameter = max(diameter, left_height + right_height)
+
+        return 1 + max(left_height, right_height)
+
+    dfs(root)
+    return diameter
+
 
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        return diameter(root)
+        return diameter_of_binary_tree(root)
