@@ -60,8 +60,10 @@ def check(nums: List[int]) -> bool:
     for i, num in enumerate(nums):
         if num < nums[i - 1]:
             inconsistency_count += 1
+        if inconsistency_count == 2:
+            return False
     logger.debug(f"{nums = }, {inconsistency_count = }")
-    return inconsistency_count <= 1
+    return True
 
 
 class Solution:
