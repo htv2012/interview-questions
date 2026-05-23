@@ -8,7 +8,7 @@ dependencies = []
 
 [tool.pytest.ini_options]
 log_cli="true"
-log_level="DEBUG"
+log_level="WARN"
 
 [dependency-groups]
 dev = [
