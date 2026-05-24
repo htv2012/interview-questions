@@ -1,0 +1,16 @@
+[project]
+name = "leetcode-0278"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=9.0.3", "ruff>=0.15.14", "ty>=0.0.39"]
+
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "WARN"
+log_level = "DEBUG"
