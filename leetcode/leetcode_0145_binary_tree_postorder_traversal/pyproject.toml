@@ -1,0 +1,25 @@
+[project]
+name = "leetcode-0145"
+version = "0.1.0"
+description = "Binary Tree Post Order"
+readme = "README.md"
+authors = [
+    { name = "Hai Vu", email = "haivu2004@gmail.com" }
+]
+requires-python = ">=3.13"
+
+[tool.pytest.ini_options]
+log_cli="true"
+log_level="DEBUG"
+markers=["slow"]
+
+[dependency-groups]
+dev = [
+    "graphviz>=0.21",
+    "ipython>=9.13.0",
+    "jupyterlab>=4.5.7",
+    "matplotlib>=3.10.9",
+    "pytest>=9.0.3",
+    "ruff>=0.15.14",
+    "ty>=0.0.39",
+]

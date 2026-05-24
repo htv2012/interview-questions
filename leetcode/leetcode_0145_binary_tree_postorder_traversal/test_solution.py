@@ -4,9 +4,12 @@ https://leetcode.com/problems/binary-tree-postorder-traversal/description/
 
 import pytest
 
+from solution import post_order
+from tree import breadth_first_build
+
 
 @pytest.mark.parametrize(
-    ["root", "expected"],
+    ["seq", "expected"],
     [
         pytest.param([1, None, 2, 3], [3, 2, 1], id="Example 1"),
         pytest.param(
@@ -18,5 +21,6 @@ import pytest
         pytest.param([1], [1], id="Example 4"),
     ],
 )
-def test_solution(fut, root, expected):
-    assert fut(root) == expected
+def test_solution(seq, expected):
+    root = breadth_first_build(seq)
+    assert post_order(root) == expected
