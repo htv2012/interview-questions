@@ -9,12 +9,16 @@ def isBadVersion(version: int) -> bool:
 def binary_search(lower: int, upper: int) -> int:
     if lower == upper:
         if isBadVersion(lower):
+            logging.debug(f"First bad version is {lower:,}")
             return lower
-        return -1
+
+        msg = "No first bad version found"
+        logging.debug(msg)
+        raise ValueError(msg)
 
     mid = (lower + upper) // 2
     is_bad = isBadVersion(mid)
-    logging.debug(f"{lower=}, {upper=}, {mid=}, {is_bad=}")
+    logging.debug(f"{lower = :14,} | {upper = :14,} | {mid = :14,} | {is_bad=}")
 
     if is_bad:
         return binary_search(lower, mid)
@@ -23,7 +27,6 @@ def binary_search(lower: int, upper: int) -> int:
 
 
 def first_bad_version(n: int) -> int:
-    """Binary search for the bad version"""
     return binary_search(1, n)
 
 

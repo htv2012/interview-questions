@@ -7,7 +7,6 @@ import json
 import pytest
 
 import solution
-from solution import first_bad_version
 
 
 def create_api(bad: int):
@@ -25,9 +24,20 @@ def create_api(bad: int):
         pytest.param(1, 1, 1, id="single version"),
         pytest.param(2, 1, 1, id="2 versions, first one bad"),
         pytest.param(2, 2, 2, id="2 versions, last one bad"),
-        pytest.param(10, 11, -1, id="no bad version found"),
+        pytest.param(
+            int(2**31 - 1), int(2**31 - 2), int(2**31 - 2), id="edge, bad near the end"
+        ),
+        pytest.param(
+            int(2**31 - 1), int(2**31 - 1), int(2**31 - 1), id="edge, bad at the end"
+        ),
     ],
 )
 def test_solution(n, bad, expected, monkeypatch):
     monkeypatch.setattr(solution, "isBadVersion", lambda v: v >= bad)
-    assert first_bad_version(n) == expected
+    assert solution.first_bad_version(n) == expected
+
+
+def test_not_found(monkeypatch):
+    monkeypatch.setattr(solution, "isBadVersion", lambda v: v >= 500)
+    with pytest.raises(ValueError):
+        solution.first_bad_version(100)
