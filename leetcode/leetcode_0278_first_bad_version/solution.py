@@ -1,26 +1,25 @@
-import json
 import logging
 
 
 # The isBadVersion API is already defined for you.
 def isBadVersion(version: int) -> bool:
-    with open("/tmp/bad.json") as stream:
-        bad_version = json.load(stream)
-    return version <= bad_version
+    raise NotImplementedError("To be supplied by leetcode")
 
 
 def binary_search(lower: int, upper: int) -> int:
-    logging.debug(f"{lower=}, {upper=}")
-    if lower == upper and isBadVersion(lower):
-        return lower
-    elif lower > upper:
-        raise ValueError(f"{lower=}, {upper=}")
+    if lower == upper:
+        if isBadVersion(lower):
+            return lower
+        return -1
 
     mid = (lower + upper) // 2
-    if isBadVersion(mid):
+    is_bad = isBadVersion(mid)
+    logging.debug(f"{lower=}, {upper=}, {mid=}, {is_bad=}")
+
+    if is_bad:
         return binary_search(lower, mid)
     else:
-        return binary_search(mid, upper)
+        return binary_search(mid + 1, upper)
 
 
 def first_bad_version(n: int) -> int:
