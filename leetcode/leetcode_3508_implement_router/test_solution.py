@@ -48,6 +48,14 @@ from solution import Router
             ),
             id="Example 2",
         ),
+        pytest.param(
+            types.SimpleNamespace(
+                actions=["Router", "addPacket", "getCount"],
+                args_list=[[3], [1, 4, 90], [5, 100, 110]],
+                expected=[None, True, 0],
+            ),
+            id="key error",
+        ),
     ],
 )
 def test_solution(test_case):
