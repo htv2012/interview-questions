@@ -1,21 +1,31 @@
+import bisect
 from typing import List
 
 
 class MovieRentingSystem:
     def __init__(self, n: int, entries: List[List[int]]):
-        raise NotImplementedError("__init__")
+        self.price_lookup = {}
+        self.in_stock = {}
+        self.rented = []
+        for shop, movie, price in entries:
+            stock = self.in_stock.setdefault(movie, [])
+            bisect.insort(stock, (price, shop))
+            self.price_lookup[shop, movie] = price
 
     def search(self, movie: int) -> List[int]:
-        raise NotImplementedError("search")
+        stock = self.in_stock[movie]
+        return [shop for price, shop in stock[:5]]
 
     def rent(self, shop: int, movie: int) -> None:
-        raise NotImplementedError("rent")
+        price = self.price_lookup[shop, movie]
+        self.in_stock[movie].remove((price, shop))
+        bisect.insort(self.rented, (price, shop, movie))
 
     def drop(self, shop: int, movie: int) -> None:
         raise NotImplementedError("drop")
 
     def report(self) -> List[List[int]]:
-        raise NotImplementedError("report")
+        return [[shop, movie] for _, shop, movie in self.rented[:5]]
 
 
 # Your MovieRentingSystem object will be instantiated and called as such:
