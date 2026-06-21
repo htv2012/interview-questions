@@ -1,4 +1,5 @@
 import collections
+import json
 import logging
 
 import pytest
@@ -6,6 +7,16 @@ import pytest
 from solution import MovieRentingSystem
 
 Step = collections.namedtuple("Step", ["action", "args", "expected"])
+
+
+def load_test_cases():
+    with open("edge_cases.json") as stream:
+        raw = json.load(stream)
+
+    return [
+        pytest.param(actions, args_list, id=test_id)
+        for test_id, actions, args_list in raw
+    ]
 
 
 @pytest.mark.parametrize(
@@ -344,3 +355,8 @@ def test_solution(steps):
             actual = method(*args)
             logging.debug("actual=  %r", actual)
             assert actual == expected
+
+
+@pytest.mark.parametrize("actions,args_list", load_test_cases())
+def test_solution2(actions, args_list):
+    pass
