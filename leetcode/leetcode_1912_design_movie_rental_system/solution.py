@@ -13,7 +13,7 @@ class MovieRentingSystem:
             self.price_lookup[shop, movie] = price
 
     def search(self, movie: int) -> List[int]:
-        stock = self.in_stock[movie]
+        stock = self.in_stock.get(movie, [])
         return [shop for price, shop in stock[:5]]
 
     def rent(self, shop: int, movie: int) -> None:
@@ -22,7 +22,9 @@ class MovieRentingSystem:
         bisect.insort(self.rented, (price, shop, movie))
 
     def drop(self, shop: int, movie: int) -> None:
-        raise NotImplementedError("drop")
+        price = self.price_lookup[shop, movie]
+        self.rented.remove((price, shop, movie))
+        bisect.insort(self.in_stock[movie], (price, shop))
 
     def report(self) -> List[List[int]]:
         return [[shop, movie] for _, shop, movie in self.rented[:5]]
