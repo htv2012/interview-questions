@@ -60,7 +60,7 @@ class MyLinkedList:
 
     def __repr__(self):
         values = " → ".join(str(node) for node in self)
-        if len(values) > 10:
+        if len(values) > 40:
             values = f"{values[:36]} ..."
         return f"<{values}>"
 
