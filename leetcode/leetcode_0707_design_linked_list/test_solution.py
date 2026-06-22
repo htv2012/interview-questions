@@ -7,6 +7,32 @@ import pytest
 from solution import MyLinkedList
 
 
+@pytest.fixture
+def li() -> MyLinkedList:
+    return MyLinkedList()
+
+
+def test_create(li):
+    assert li.head is None
+    assert li.tail is None
+
+
+def test_add_head_when_empty(li: MyLinkedList):
+    li.addAtHead(9)
+    assert li.head is li.tail
+    assert li.head.val == 9
+    assert li.head.next is None
+
+
+def test_add_tail(li: MyLinkedList):
+    values = [1, 2, 3]
+    for value in values:
+        li.addAtTail(value)
+        assert li.head.val == 1, f"verify head after adding {value}"
+        assert li.tail.val == value, f"verify tail after adding {value}"
+        assert li.tail.next is None, f"verify tail.next after adding {value}"
+
+
 @pytest.mark.parametrize(
     "actions,args_list,expected_list",
     [

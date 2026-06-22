@@ -1,11 +1,11 @@
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass
 class Node:
     val: int
-    next: Optional[Any] = None
+    next: Optional["Node"] = None
 
 
 class MyLinkedList:
@@ -20,20 +20,16 @@ class MyLinkedList:
         return p.val
 
     def addAtHead(self, val: int) -> None:
-        node = Node(val, next=self.head)
-        if self.tail is None:
-            self.tail = node
-        if self.head:
-            self.head.next = node
-        self.head = node
+        raise NotImplementedError("addAtHead")
 
     def addAtTail(self, val: int) -> None:
         node = Node(val)
-        if self.head is None:
-            self.head = node
-        if self.tail:
+        if self.tail is not None:
             self.tail.next = node
         self.tail = node
+
+        if self.head is None:
+            self.head = node
 
     def addAtIndex(self, index: int, val: int) -> None:
         if index == 0:
@@ -57,7 +53,8 @@ class MyLinkedList:
             p = p.next
 
     def __repr__(self):
-        return f"<{','.join(str(p.val) for p in self)}>"
+        values = ">".join(str(p.val) for p, _ in zip(self, range(5)))
+        return f"[[{values}]]"
 
 
 # Your MyLinkedList object will be instantiated and called as such:
@@ -70,7 +67,6 @@ class MyLinkedList:
 
 
 li = MyLinkedList()
-li.addAtHead(1)
-print(li)
-li.addAtIndex(0, -9)
+for i in range(4):
+    li.addAtTail(i)
 print(li)
