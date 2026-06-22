@@ -12,6 +12,13 @@ def li() -> MyLinkedList:
     return MyLinkedList()
 
 
+@pytest.fixture
+def li10(li) -> MyLinkedList:
+    for value in range(0, 100, 10):
+        li.addAtTail(value)
+    return li
+
+
 def test_create(li):
     assert li.head is None
     assert li.tail is None
@@ -31,6 +38,17 @@ def test_add_tail(li: MyLinkedList):
         assert li.head.val == 1, f"verify head after add tail {value}"
         assert li.tail.val == value, f"verify tail after add tail {value}"
         assert li.tail.next is None, f"verify tail.next after add tail {value}"
+
+
+@pytest.mark.parametrize("index", list(range(5)))
+def test_get(li10: MyLinkedList, index):
+    assert li10.get(index) == index * 10
+
+
+@pytest.mark.parametrize("index", [-1, 0, 100])
+def test_get_expect_out_of_range(li10: MyLinkedList, index: int):
+    with pytest.raises(ValueError):
+        li10.get(index)
 
 
 @pytest.mark.parametrize(

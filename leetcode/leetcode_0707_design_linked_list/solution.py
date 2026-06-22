@@ -14,10 +14,10 @@ class MyLinkedList:
         self.tail = None
 
     def get(self, index: int) -> int:
-        p = self.head
-        for _ in range(index):
-            p = p.next
-        return p.val
+        for position, node in enumerate(self):
+            if position == index:
+                return node.val
+        raise ValueError(f"Index out of range: {index}")
 
     def addAtHead(self, val: int) -> None:
         node = Node(val, next=self.head)
@@ -58,8 +58,8 @@ class MyLinkedList:
             p = p.next
 
     def __repr__(self):
-        values = ">".join(str(p.val) for p, _ in zip(self, range(5)))
-        return f"[[{values}]]"
+        values = " ".join(str(p.val) for p, _ in zip(self, range(5)))
+        return f"<{values}>"
 
 
 # Your MyLinkedList object will be instantiated and called as such:
