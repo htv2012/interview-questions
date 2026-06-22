@@ -50,13 +50,13 @@ class MyLinkedList:
         raise NotImplementedError("deleteAtIndex")
 
     def __iter__(self):
-        p = self.head
-        while p:
-            yield p
-            p = p.next
+        node = self.head
+        while node:
+            yield node
+            node = node.next
 
     def __repr__(self):
-        values = " ".join(str(p.val) for p, _ in zip(self, range(5)))
+        values = " → ".join(f"({node.val})" for node, _ in zip(self, range(5)))
         return f"<{values}>"
 
 
