@@ -17,7 +17,7 @@ class MyLinkedList:
         for position, node in enumerate(self):
             if position == index:
                 return node.val
-        raise ValueError(f"Index out of range: {index}")
+        return -1
 
     def addAtHead(self, val: int) -> None:
         node = Node(val, next=self.head)
@@ -36,17 +36,15 @@ class MyLinkedList:
             self.head = node
 
     def addAtIndex(self, index: int, val: int) -> None:
-        raise NotImplementedError("addAtIndex")
-        # if index == 0:
-        #     self.addAtHead(val)
-        #     return
+        if index == 0:
+            self.addAtHead(val)
+            return
 
-        # current = self.head
-        # previous = None
-        # for _ in range(index):
-        #     previous, current = current, current.next
-        # node = Node(val, next=current)
-        # previous.next = node
+        for position, previous in enumerate(self):
+            if position == index - 1:
+                node = Node(val, next=previous.next)
+                previous.next = node
+                return
 
     def deleteAtIndex(self, index: int) -> None:
         raise NotImplementedError("deleteAtIndex")
