@@ -17,20 +17,20 @@ def test_create(li):
     assert li.tail is None
 
 
-def test_add_head_when_empty(li: MyLinkedList):
-    li.addAtHead(9)
-    assert li.head is li.tail
-    assert li.head.val == 9
-    assert li.head.next is None
+def test_add_head(li: MyLinkedList):
+    for value in [1, 2, 3]:
+        li.addAtHead(value)
+        assert li.head.val == value, f"verify head after add head {value}"
+        assert li.tail.val == 1, f"verify tail after add head {value}"
 
 
 def test_add_tail(li: MyLinkedList):
     values = [1, 2, 3]
     for value in values:
         li.addAtTail(value)
-        assert li.head.val == 1, f"verify head after adding {value}"
-        assert li.tail.val == value, f"verify tail after adding {value}"
-        assert li.tail.next is None, f"verify tail.next after adding {value}"
+        assert li.head.val == 1, f"verify head after add tail {value}"
+        assert li.tail.val == value, f"verify tail after add tail {value}"
+        assert li.tail.next is None, f"verify tail.next after add tail {value}"
 
 
 @pytest.mark.parametrize(

@@ -20,7 +20,11 @@ class MyLinkedList:
         return p.val
 
     def addAtHead(self, val: int) -> None:
-        raise NotImplementedError("addAtHead")
+        node = Node(val, next=self.head)
+        self.head = node
+        if self.tail is None:
+            # case: add head when list is empty
+            self.tail = node
 
     def addAtTail(self, val: int) -> None:
         node = Node(val)
@@ -32,16 +36,17 @@ class MyLinkedList:
             self.head = node
 
     def addAtIndex(self, index: int, val: int) -> None:
-        if index == 0:
-            self.addAtHead(val)
-            return
+        raise NotImplementedError("addAtIndex")
+        # if index == 0:
+        #     self.addAtHead(val)
+        #     return
 
-        current = self.head
-        previous = None
-        for _ in range(index):
-            previous, current = current, current.next
-        node = Node(val, next=current)
-        previous.next = node
+        # current = self.head
+        # previous = None
+        # for _ in range(index):
+        #     previous, current = current, current.next
+        # node = Node(val, next=current)
+        # previous.next = node
 
     def deleteAtIndex(self, index: int) -> None:
         raise NotImplementedError("deleteAtIndex")
