@@ -7,6 +7,9 @@ class Node:
     val: int
     next: Optional["Node"] = None
 
+    def __repr__(self):
+        return f"({self.val})"
+
 
 class MyLinkedList:
     def __init__(self):
@@ -56,7 +59,9 @@ class MyLinkedList:
             node = node.next
 
     def __repr__(self):
-        values = " → ".join(f"({node.val})" for node, _ in zip(self, range(5)))
+        values = " → ".join(str(node) for node in self)
+        if len(values) > 10:
+            values = f"{values[:36]} ..."
         return f"<{values}>"
 
 
