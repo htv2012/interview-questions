@@ -1,7 +1,7 @@
 .PHONY: all lab lint py test run
 
 ### Default target(s)
-all: test run
+all: test
 
 ### Perform static analysis
 lint:

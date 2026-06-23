@@ -50,7 +50,21 @@ class MyLinkedList:
                 return
 
     def deleteAtIndex(self, index: int) -> None:
-        raise NotImplementedError("deleteAtIndex")
+        if self.head is None:
+            return
+
+        if index == 0:
+            if self.tail is self.head:
+                # case: single node
+                self.tail = None
+            to_be_deleted_node = self.head
+            self.head = to_be_deleted_node.next
+
+        for position, previous in enumerate(self):
+            if position == index - 1:
+                to_be_deleted_node = previous.next
+                previous.next = to_be_deleted_node.next
+                return
 
     def __iter__(self):
         node = self.head
@@ -72,9 +86,3 @@ class MyLinkedList:
 # obj.addAtTail(val)
 # obj.addAtIndex(index,val)
 # obj.deleteAtIndex(index)
-
-
-li = MyLinkedList()
-for i in range(4):
-    li.addAtTail(i)
-print(li)
