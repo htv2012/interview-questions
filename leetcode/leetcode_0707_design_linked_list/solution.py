@@ -15,17 +15,15 @@ class MyLinkedList:
         self.head = None
         self.tail = None
 
-    def get(self, index: int) -> int:
-        for position, node in enumerate(self):
-            if position == index:
-                return node.val
-        return -1
-
     def get_node(self, index: int):
         for position, node in enumerate(self):
             if position == index:
                 return node
         return None
+
+    def get(self, index: int) -> int:
+        node = self.get_node(index)
+        return -1 if node is None else node.val
 
     def addAtHead(self, val: int) -> None:
         node = Node(val, next=self.head)
@@ -58,18 +56,19 @@ class MyLinkedList:
         if pre_tba is self.tail:
             # case: add at the very end
             self.tail = tba
-        return
 
     def deleteAtIndex(self, index: int) -> None:
         if self.head is None:
             return
 
         if index == 0:
+            # case: delete at head
             if self.tail is self.head:
                 # case: single node
                 self.tail = None
             tbd_node = self.head
             self.head = tbd_node.next
+            return
 
         pre_tbd_node = self.get_node(index - 1)
         if pre_tbd_node is None:
