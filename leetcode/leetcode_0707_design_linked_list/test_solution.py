@@ -2,9 +2,13 @@
 https://leetcode.com/problems/design-linked-list/description/
 """
 
+import logging
+
 import pytest
 
 from solution import MyLinkedList
+
+logger = logging.getLogger()
 
 
 @pytest.mark.parametrize(
@@ -38,7 +42,8 @@ from solution import MyLinkedList
                 "addAtHead",
                 "addAtIndex",
                 "addAtHead",
-            ][[], [7], [2], [1], [3, 0], [2], [6], [4], [4], [4], [5, 0], [6]],
+            ],
+            [[], [7], [2], [1], [3, 0], [2], [6], [4], [4], [4], [5, 0], [6]],
             [None, None, None, None, None, None, None, None, 4, None, None, None],
             id="wrong 1",
         ),
@@ -47,9 +52,12 @@ from solution import MyLinkedList
 def test_solution(actions, args_list, expected_list):
     li = MyLinkedList()
     for action, args, expected in zip(actions, args_list, expected_list):
+        args_str = ", ".join(str(x) for x in args)
+        logger.debug(f"{action}({args_str})")
         if action == "MyLinkedList":
             li = MyLinkedList()
             continue
         func = getattr(li, action)
         actual = func(*args)
-        assert actual == expected, f"{action}({','.join(str(x) for x in args)})"
+        logger.debug(f"{li=}")
+        assert actual == expected, f"{action}({args_str})"
