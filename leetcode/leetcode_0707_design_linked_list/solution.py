@@ -8,7 +8,7 @@ class Node:
     next: Optional["Node"] = None
 
     def __repr__(self):
-        return f"({self.val})"
+        return str(self.val)
 
 
 class MyLinkedList:
@@ -57,13 +57,15 @@ class MyLinkedList:
             if self.tail is self.head:
                 # case: single node
                 self.tail = None
-            to_be_deleted_node = self.head
-            self.head = to_be_deleted_node.next
+            tbd_node = self.head
+            self.head = tbd_node.next
 
-        for position, previous in enumerate(self):
+        for position, pre_tbd_node in enumerate(self):
             if position == index - 1:
-                to_be_deleted_node = previous.next
-                previous.next = to_be_deleted_node.next
+                tbd_node = pre_tbd_node.next
+                pre_tbd_node.next = tbd_node.next
+                if tbd_node is self.tail:
+                    self.tail = pre_tbd_node
                 return
 
     def __iter__(self):
@@ -73,10 +75,10 @@ class MyLinkedList:
             node = node.next
 
     def __repr__(self):
-        values = " → ".join(str(node) for node in self)
+        values = ",".join(str(node) for node in self)
         if len(values) > 40:
             values = f"{values[:36]} ..."
-        return f"<{values}>"
+        return f"<List H={self.head.val} T={self.tail.val} V={values}>"
 
 
 # Your MyLinkedList object will be instantiated and called as such:
