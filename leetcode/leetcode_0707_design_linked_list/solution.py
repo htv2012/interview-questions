@@ -8,7 +8,7 @@ class Node:
     next: Optional["Node"] = None
 
     def __repr__(self):
-        return str(self.val)
+        return f"({self.val})"
 
 
 class MyLinkedList:
@@ -43,10 +43,13 @@ class MyLinkedList:
             self.addAtHead(val)
             return
 
-        for position, previous in enumerate(self):
+        for position, pre_tba in enumerate(self):
             if position == index - 1:
-                node = Node(val, next=previous.next)
-                previous.next = node
+                tba = Node(val, next=pre_tba.next)
+                pre_tba.next = tba
+                if pre_tba is self.tail:
+                    # case: add at the very end
+                    self.tail = tba
                 return
 
     def deleteAtIndex(self, index: int) -> None:
@@ -75,9 +78,7 @@ class MyLinkedList:
             node = node.next
 
     def __repr__(self):
-        values = ",".join(str(node) for node in self)
-        if len(values) > 40:
-            values = f"{values[:36]} ..."
+        values = ",".join(str(node.val) for node in self)
         return f"<List H={self.head.val} T={self.tail.val} V={values}>"
 
 

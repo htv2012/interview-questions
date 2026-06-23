@@ -74,20 +74,25 @@ def test_add_at_index_scenario(li: MyLinkedList):
 
 
 @pytest.mark.parametrize(
-    "index, value, expected",
+    "index, value, expected, expected_tail",
     [
-        pytest.param(0, 999, [999] + LIST_CONTENT, id="add at index 0"),
-        pytest.param(10, 999, LIST_CONTENT + [999], id="add at last"),
-        pytest.param(1, 999, [0, 999] + LIST_CONTENT[1:], id="add at index 1"),
-        pytest.param(9, 999, LIST_CONTENT[:-1] + [999, 90], id="add at next-to-last"),
-        pytest.param(-1, 999, LIST_CONTENT, id="add at index -1"),
-        pytest.param(11, 999, LIST_CONTENT, id="add pass the length"),
-        pytest.param(100, 999, LIST_CONTENT, id="add way pass the length"),
+        pytest.param(0, 999, [999] + LIST_CONTENT, 90, id="add at index 0"),
+        pytest.param(10, 999, LIST_CONTENT + [999], 999, id="add at last"),
+        pytest.param(1, 999, [0, 999] + LIST_CONTENT[1:], 90, id="add at index 1"),
+        pytest.param(
+            9, 999, LIST_CONTENT[:-1] + [999, 90], 90, id="add at next-to-last"
+        ),
+        pytest.param(-1, 999, LIST_CONTENT, 90, id="add at index -1"),
+        pytest.param(11, 999, LIST_CONTENT, 90, id="add pass the length"),
+        pytest.param(100, 999, LIST_CONTENT, 90, id="add way pass the length"),
     ],
 )
-def test_add_at_index(li10: MyLinkedList, index: int, value: int, expected: list):
+def test_add_at_index(
+    li10: MyLinkedList, index: int, value: int, expected: list, expected_tail: int
+):
     li10.addAtIndex(index, value)
     assert [node.val for node in li10] == expected
+    assert li10.tail.val == expected_tail
 
 
 @pytest.mark.parametrize(
