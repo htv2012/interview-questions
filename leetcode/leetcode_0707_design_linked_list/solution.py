@@ -1,11 +1,10 @@
-from dataclasses import dataclass
 from typing import Optional
 
 
-@dataclass
 class Node:
-    val: int
-    next: Optional["Node"] = None
+    def __init__(self, val: int, next: Optional["Node"] = None):
+        self.val = val
+        self.next = next
 
     def __repr__(self):
         return f"({self.val})"
@@ -21,6 +20,12 @@ class MyLinkedList:
             if position == index:
                 return node.val
         return -1
+
+    def get_node(self, index: int):
+        for position, node in enumerate(self):
+            if position == index:
+                return node
+        return None
 
     def addAtHead(self, val: int) -> None:
         node = Node(val, next=self.head)
@@ -43,14 +48,17 @@ class MyLinkedList:
             self.addAtHead(val)
             return
 
-        for position, pre_tba in enumerate(self):
-            if position == index - 1:
-                tba = Node(val, next=pre_tba.next)
-                pre_tba.next = tba
-                if pre_tba is self.tail:
-                    # case: add at the very end
-                    self.tail = tba
-                return
+        pre_tba = self.get_node(index - 1)
+        if pre_tba is None:
+            # case: add pass tail + 1
+            return
+
+        tba = Node(val, next=pre_tba.next)
+        pre_tba.next = tba
+        if pre_tba is self.tail:
+            # case: add at the very end
+            self.tail = tba
+        return
 
     def deleteAtIndex(self, index: int) -> None:
         if self.head is None:
@@ -63,16 +71,20 @@ class MyLinkedList:
             tbd_node = self.head
             self.head = tbd_node.next
 
-        for position, pre_tbd_node in enumerate(self):
-            if position == index - 1:
-                tbd_node = pre_tbd_node.next
-                if tbd_node is None:
-                    # case: delete 1 pass tail
-                    break
-                pre_tbd_node.next = tbd_node.next
-                if tbd_node is self.tail:
-                    self.tail = pre_tbd_node
-                break
+        pre_tbd_node = self.get_node(index - 1)
+        if pre_tbd_node is None:
+            # case: delete pass tail
+            return
+
+        tbd_node = pre_tbd_node.next
+        if tbd_node is None:
+            # case: delete 1 pass tail
+            return
+
+        pre_tbd_node.next = tbd_node.next
+        if tbd_node is self.tail:
+            self.tail = pre_tbd_node
+        return
 
     def __iter__(self):
         node = self.head
