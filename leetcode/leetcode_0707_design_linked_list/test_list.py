@@ -102,6 +102,7 @@ def test_add_at_index(
         pytest.param(1, [0] + LIST_CONTENT[2:], id="delete at head + 1"),
         pytest.param(8, LIST_CONTENT[:8] + [90], id="delete at tail - 1"),
         pytest.param(9, LIST_CONTENT[:9], id="delete at tail"),
+        pytest.param(10, LIST_CONTENT, id="delete 1 pass tail"),
         pytest.param(-1, LIST_CONTENT, id="delete beyond list head"),
         pytest.param(11, LIST_CONTENT, id="delete beyond list tail"),
         pytest.param(5, LIST_CONTENT[:5] + LIST_CONTENT[6:], id="delete at middle"),

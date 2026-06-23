@@ -66,10 +66,13 @@ class MyLinkedList:
         for position, pre_tbd_node in enumerate(self):
             if position == index - 1:
                 tbd_node = pre_tbd_node.next
+                if tbd_node is None:
+                    # case: delete 1 pass tail
+                    break
                 pre_tbd_node.next = tbd_node.next
                 if tbd_node is self.tail:
                     self.tail = pre_tbd_node
-                return
+                break
 
     def __iter__(self):
         node = self.head
