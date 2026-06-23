@@ -57,6 +57,8 @@ def test_solution(actions, args_list, expected_list):
         if action == "MyLinkedList":
             li = MyLinkedList()
             continue
+        if action == "addAtTail":
+            breakpoint()
         func = getattr(li, action)
         actual = func(*args)
         logger.debug(f"{li=}")
