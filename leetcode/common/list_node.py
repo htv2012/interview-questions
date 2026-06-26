@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.getLogger()
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -47,8 +51,10 @@ def iter_list(head: ListNode):
 
 
 def assert_values(head: ListNode, expected: list):
+    logger.debug(f"assert_values({head=}, {expected=})")
     node = head
     for node_number, expected_value in enumerate(expected):
+        assert node is not None, f"Expect node[{node_number}]={expected_value!r}, but the node is None"
         assert (
             node.val == expected_value
         ), f"Node number: {node_number}, {expected_value=}, {node.val=}"
