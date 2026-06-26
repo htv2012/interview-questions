@@ -1,0 +1,17 @@
+{
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.autoComplete.extraPaths": ["$(workspaceFolder)/../common"],
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "$(workspaceFolder)/../common"
+    },
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "$(workspaceFolder)/../common"
+    },
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "$(workspaceFolder)/../common"
+    },
+}
