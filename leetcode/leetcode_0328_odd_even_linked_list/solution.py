@@ -32,10 +32,10 @@ class Solution:
             even_head, even_tail = append_node(even_head, even_tail, even_node)
 
             if odd_node.next is None:
-                # at the end
-                odd_node.next = even_head
                 break
 
             odd_node = odd_node.next
 
+        if odd_node is not None:
+            odd_node.next = even_head
         return head
