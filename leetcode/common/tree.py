@@ -2,13 +2,10 @@
 Definition for a binary tree node.
 """
 
-import argparse
 import collections
 import itertools
 import json
 from typing import Optional
-
-# from drawtree.drawtree import drawtree
 
 
 class TreeNode:
