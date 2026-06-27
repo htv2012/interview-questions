@@ -11,21 +11,6 @@ from tree import TreeNode
 #         self.right = right
 
 
-def bfs(root: Optional[TreeNode]):
-    que = collections.deque()  # queue of (node, parent, level)
-    que.append((root, None, 0))
-
-    while que:
-        node, parent, level = que.popleft()
-        if node is None:
-            continue
-
-        yield node, parent, level
-
-        que.append((node.left, node, level + 1))
-        que.append((node.right, node, level + 1))
-
-
 def children_values(root: Optional[TreeNode]) -> int:
     if root is None:
         return 0
@@ -38,21 +23,38 @@ def children_values(root: Optional[TreeNode]) -> int:
     return out
 
 
+def dfs(root: Optional[TreeNode]):
+    stack = collections.deque()  # queue of (node, parent, level)
+    stack.append((root, None, 0))
+    done = {None}  # is this node processed?
+
+    while stack:
+        node, parent, level = stack.pop()
+        if node in done:
+            continue
+
+        if node.left in done and node.right in done:
+            yield node, parent, level
+            done.add(node)
+        else:
+            stack.append((node, parent, level))
+            stack.append((node.right, node, level + 1))
+            stack.append((node.left, node, level + 1))
+
+
 class Solution:
     def replaceValueInTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         level_sum = collections.Counter()
-        sibblings_sum = {}  # {node: sum for the sibbling and me}
+        sibblings_sum = {}  # {node: sum of my sibbling's value and mine}
 
-        for node, parent, level in bfs(root):
-            if level == 0:
-                continue
+        for node, parent, level in dfs(root):
             level_sum[level] += node.val
             sibblings_sum[node] = children_values(parent)
 
-        for node, _, level in bfs(root):
+        for node, _, level in dfs(root):
             if level == 0:
                 node.val = 0
-
-            node.val = level_sum[level] - sibblings_sum[node]
+            else:
+                node.val = level_sum[level] - sibblings_sum[node]
 
         return root

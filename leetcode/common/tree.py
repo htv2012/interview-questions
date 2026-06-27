@@ -2,10 +2,13 @@
 Definition for a binary tree node.
 """
 
+import logging
 import collections
 import itertools
 import json
 from typing import Optional
+
+logger = logging.getLogger()
 
 
 class TreeNode:
@@ -129,3 +132,32 @@ def max_depth(root: Optional[TreeNode]) -> int:
     left_depth = max_depth(root.left) + 1
     right_depth = max_depth(root.right) + 1
     return max(left_depth, right_depth)
+
+
+def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
+    """Return True if the trees have the same structure and values."""
+    que = collections.deque()
+    que.appendleft((t1, t2))
+
+    while que:
+        node1, node2 = que.pop()
+
+        if node1 is None and node2 is None:
+            # both are None: they are the same
+            continue
+        elif node1 is None or node2 is None:
+            logger.debug(
+                f"Trees differ because one of the nodes is None: {node1=}, {node2=}"
+            )
+            return False
+
+        if node1.val != node2.val:
+            logger.debug(
+                f"Trees differ because values are different: {node1=}, {node2=}"
+            )
+            return False
+
+        que.append((node1.left, node2.left))
+        que.append((node1.right, node2.right))
+
+    return True

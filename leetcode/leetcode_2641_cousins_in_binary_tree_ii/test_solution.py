@@ -2,12 +2,10 @@
 https://leetcode.com/problems/cousins-in-binary-tree-ii/
 """
 
-import collections
 import logging
-from typing import Optional
 
 import pytest
-from tree import TreeNode, breadth_first_build
+from tree import breadth_first_build, compare_trees
 
 from solution import Solution
 
@@ -29,32 +27,6 @@ def tc(**kwargs):
     )
 
 
-def same_tree(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
-    que = collections.deque()
-    que.append_left((t1, t2))
-
-    while que:
-        node1, node2 = que.pop()
-        if node1 is None and node2 is None:
-            continue
-        elif node1 is None or node2 is None:
-            logger.debug(
-                f"Trees differ because of the node is None: {node1=}, {node2=}"
-            )
-            return False
-
-        if node1.val != node2.val:
-            logger.debug(
-                f"Trees differ because values are different: {node1=}, {node2=}"
-            )
-            return False
-
-        que.append((node1.left, node2.left))
-        que.append((node1.right, node2.right))
-
-    return True
-
-
 @pytest.mark.parametrize(
     "root, expected",
     [
@@ -74,4 +46,4 @@ def test_solution(fut, root, expected):
     root = breadth_first_build(root)
     root = fut(root)
     expected = breadth_first_build(expected)
-    assert same_tree(root, expected)
+    assert compare_trees(root, expected)
