@@ -1,3 +1,6 @@
+import itertools
+import itertools
+from typing import Optional
 import logging
 
 logger = logging.getLogger()
@@ -60,3 +63,19 @@ def assert_values(head: ListNode, expected: list):
         ), f"Node number: {node_number}, {expected_value=}, {node.val=}"
         node = node.next
     assert node is None
+
+
+def verify_values(head: Optional[ListNode], expected_values: list) -> bool:
+    marker = object()
+    pairs = itertools.zip_longest(iter_list(head), expected_values, fillvalue=marker)
+    for index, (node, expected_value) in enumerate(pairs):
+        if node is marker:
+            logger.debug("list is too short, missing %r", expected_values[index:])
+            return False
+        elif expected_value is marker:
+            logger.debug("list is too long, has extra %r", [n.val for n in iter_list(node)])
+            return False
+        elif node.val != expected_value:
+            logger.debug("at node #%d, expected=%r, but actual=%r", index, expected_value, node.val)
+            return False
+    return True
