@@ -8,7 +8,7 @@ import itertools
 import json
 from typing import Optional
 
-from drawtree.drawtree import drawtree
+# from drawtree.drawtree import drawtree
 
 
 class TreeNode:
@@ -132,18 +132,3 @@ def max_depth(root: Optional[TreeNode]) -> int:
     left_depth = max_depth(root.left) + 1
     right_depth = max_depth(root.right) + 1
     return max(left_depth, right_depth)
-
-
-def main():
-    """Draw tree via deserialize."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("json_text")
-    args = parser.parse_args()
-    print(args)
-
-    root = deserialize(args.json_text)
-    drawtree(root)
-
-
-if __name__ == "__main__":
-    main()

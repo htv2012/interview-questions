@@ -3,6 +3,7 @@ https://leetcode.com/problems/cousins-in-binary-tree/
 """
 
 import pytest
+import tree
 
 from solution import Solution
 
@@ -51,5 +52,5 @@ def tc(**kwargs):
     ],
 )
 def test_solution(fut, root, x, y, expected):
-    #    assert fut(root, x, y) == expected
-    pass
+    root = tree.breadth_first_build(root)
+    assert fut(root, x, y) == expected

@@ -1,15 +1,12 @@
 import collections
-from typing import Optional, Callable
-
+from typing import Optional
 
 from tree import TreeNode
 
 
-Visit = Callable[[TreeNode, int], None]
-
-
 def breadth_first_iter(root: Optional[TreeNode]):
-    que = collections.deque([root, 0])
+    que = collections.deque()
+    que.append((root, 0))
     while que:
         node, level = que.popleft()
         if node is None:
@@ -27,14 +24,21 @@ def breadth_first_iter(root: Optional[TreeNode]):
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+
 class Solution:
     def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
         parent = {}  # child_value: parent_value
-        nodes = {}  # level: node
-        
-        for node, level in breadth_first_iter(root):
+        level = {}  # value: level
+
+        for node, node_level in breadth_first_iter(root):
             if node.left:
                 parent[node.left.val] = node.val
             if node.right:
                 parent[node.right.val] = node.val
-            if 
+
+            level[node.val] = node_level
+            if x in level and y in level:
+                break
+
+        return (level[x] == level[y]) and (parent[x] != parent[y])
