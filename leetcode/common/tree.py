@@ -161,3 +161,22 @@ def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
         que.append((node1.right, node2.right))
 
     return True
+
+
+def dfs(root: Optional[TreeNode]):
+    stack = collections.deque()  # queue of (node, parent, level)
+    stack.append((root, None, 0))
+    done = {None}  # is this node processed?
+
+    while stack:
+        node, parent, level = stack.pop()
+        if node in done:
+            continue
+
+        if node.left in done and node.right in done:
+            yield node, parent, level
+            done.add(node)
+        else:
+            stack.append((node, parent, level))
+            stack.append((node.right, node, level + 1))
+            stack.append((node.left, node, level + 1))
