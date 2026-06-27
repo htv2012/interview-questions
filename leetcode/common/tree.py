@@ -2,13 +2,13 @@
 Definition for a binary tree node.
 """
 
-import argparse
+import logging
 import collections
 import itertools
 import json
 from typing import Optional
 
-from drawtree.drawtree import drawtree
+logger = logging.getLogger()
 
 
 class TreeNode:
@@ -134,16 +134,49 @@ def max_depth(root: Optional[TreeNode]) -> int:
     return max(left_depth, right_depth)
 
 
-def main():
-    """Draw tree via deserialize."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("json_text")
-    args = parser.parse_args()
-    print(args)
+def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
+    """Return True if the trees have the same structure and values."""
+    que = collections.deque()
+    que.appendleft((t1, t2))
 
-    root = deserialize(args.json_text)
-    drawtree(root)
+    while que:
+        node1, node2 = que.pop()
+
+        if node1 is None and node2 is None:
+            # both are None: they are the same
+            continue
+        elif node1 is None or node2 is None:
+            logger.debug(
+                f"Trees differ because one of the nodes is None: {node1=}, {node2=}"
+            )
+            return False
+
+        if node1.val != node2.val:
+            logger.debug(
+                f"Trees differ because values are different: {node1=}, {node2=}"
+            )
+            return False
+
+        que.append((node1.left, node2.left))
+        que.append((node1.right, node2.right))
+
+    return True
 
 
-if __name__ == "__main__":
-    main()
+def dfs(root: Optional[TreeNode]):
+    stack = collections.deque()  # queue of (node, parent, level)
+    stack.append((root, None, 0))
+    done = {None}  # is this node processed?
+
+    while stack:
+        node, parent, level = stack.pop()
+        if node in done:
+            continue
+
+        if node.left in done and node.right in done:
+            yield node, parent, level
+            done.add(node)
+        else:
+            stack.append((node, parent, level))
+            stack.append((node.right, node, level + 1))
+            stack.append((node.left, node, level + 1))
