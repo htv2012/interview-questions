@@ -2,6 +2,7 @@
 Definition for a binary tree node.
 """
 
+import itertools
 import logging
 import collections
 import itertools
@@ -180,3 +181,16 @@ def dfs(root: Optional[TreeNode]):
             stack.append((node, parent, level))
             stack.append((node.right, node, level + 1))
             stack.append((node.left, node, level + 1))
+
+
+def verify_binary_search_tree(root: Optional[TreeNode]) -> bool:
+    values = [node.val for node in inorder_iter(root)]
+    logger.info("verify_binary_search_tree, values = %r", values)
+    left, right = itertools.tee(values)
+    next(right)
+    for prev, cur in zip(left, right):
+        if prev >= cur:
+            logger.info("Tree is not a valid BST due to these values: %r and %r", prev, cur)
+            return False
+    return True
+
