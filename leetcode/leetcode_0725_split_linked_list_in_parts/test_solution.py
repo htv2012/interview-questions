@@ -39,7 +39,8 @@ def tc(**kwargs):
             k=3,
             expected=[[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]],
         ),
-        tc(test_id="empty", head=[], k=3, expected=[None, None, None]),
+        tc(test_id="empty", head=[], k=3, expected=[[], [], []]),
+        tc(test_id="k=1", head=[1, 2, 3], k=1, expected=[[1, 2, 3]]),
     ],
 )
 def test_solution(fut, head, k, expected):
