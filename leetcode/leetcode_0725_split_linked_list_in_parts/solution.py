@@ -18,59 +18,36 @@ def count_nodes(head: Optional[ListNode]) -> int:
     return nodes_count
 
 
-def divide(count: int, parts) -> list:
-    """
-    Divide count into parts.
-
-    >>> divide(35, 7)
-    [5, 5, 5, 5, 5, 5, 5]
-
-    >>> divide(37, 7)
-    [6, 6, 5, 5, 5, 5, 5]
-
-    >>> divide(25, 4)
-    [7, 6, 6, 6]
-
-    >>> divide(3, 1)
-    [3]
-
-    >>> divide(3, 7)
-    [1, 1, 1, 0, 0, 0, 0]
-    """
-    quotient, remainder = divmod(count, parts)
-    return [quotient + 1 if i < remainder else quotient for i in range(parts)]
-
-
 def partition(n: int, k: int):
-    """Partition n elements into k groups."""
-    quo, rem = divmod(n, k)
-    acc = 0
+    """Partition n elements into k groups.
+
+    Yield the indices where the head of a list should be.
+    """
+    group_size, remainder = divmod(n, k)
+    index = 0
     for i in range(k):
-        acc += quo + 1 if i < rem else quo
-        yield acc
+        index += group_size + 1 if i < remainder else group_size
+        yield index
 
 
 class Solution:
     def splitListToParts(
         self, head: Optional[ListNode], k: int
     ) -> List[Optional[ListNode]]:
-        if k == 1:
-            return [head]
-
         nodes_count = count_nodes(head)
-        if nodes_count == 0:
-            return [None] * k
+        head_indices = partition(nodes_count, k)
+        head_index = next(head_indices)
+        heads = [head]
+        previous_node, current_node = None, head
 
-        prev, node = None, head
-        partitions = partition(nodes_count, k)
-        head_index = next(partitions)
-        out = [head]
         for i in range(nodes_count):
             if i == head_index:
-                prev.next = None
-                out.append(node)
-                head_index = next(partitions)
-            prev, node = node, node.next
+                previous_node.next = None
+                heads.append(current_node)
+                head_index = next(head_indices)
+            previous_node, current_node = current_node, current_node.next
 
-        while len(out) < k:
-            out.append(None)
+        while len(heads) < k:
+            heads.append(None)
+
+        return heads
