@@ -55,6 +55,7 @@ class Solution:
 
         node = head
         for seg, count in zip(range(k), divide(nodes_count, k)):
+            out[seg] = node
             prev = None
             for _ in range(count):
                 prev = node
