@@ -41,6 +41,15 @@ def divide(count: int, parts) -> list:
     return [quotient + 1 if i < remainder else quotient for i in range(parts)]
 
 
+def partition(n: int, k: int):
+    """Partition n elements into k groups."""
+    quo, rem = divmod(n, k)
+    acc = 0
+    for i in range(k):
+        acc += quo + 1 if i < rem else quo
+        yield acc
+
+
 class Solution:
     def splitListToParts(
         self, head: Optional[ListNode], k: int
@@ -48,21 +57,20 @@ class Solution:
         if k == 1:
             return [head]
 
-        out = [None] * k
         nodes_count = count_nodes(head)
         if nodes_count == 0:
-            return out
+            return [None] * k
 
-        node = head
-        for seg, count in zip(range(k), divide(nodes_count, k)):
-            out[seg] = node
-            prev = None
-            for _ in range(count):
-                prev = node
-                if node is None:
-                    break
-                node = node.next
+        prev, node = None, head
+        partitions = partition(nodes_count, k)
+        head_index = next(partitions)
+        out = [head]
+        for i in range(nodes_count):
+            if i == head_index:
+                prev.next = None
+                out.append(node)
+                head_index = next(partitions)
+            prev, node = node, node.next
 
-            prev.next = None
-
-        return out
+        while len(out) < k:
+            out.append(None)

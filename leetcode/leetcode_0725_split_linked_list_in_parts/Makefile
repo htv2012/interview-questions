@@ -16,9 +16,9 @@ test: lint
 
 ### Start a Python interpreter
 py:
-	uv run ipython
+	PYTHONPATH=../common uv run ipython
 
 ### Start a Jupyter Lab
 lab:
-	uv run jupyter lab
+	PYTHONPATH=../common uv run jupyter lab
 
