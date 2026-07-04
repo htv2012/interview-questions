@@ -23,6 +23,16 @@ def search(root: Optional[TreeNode], key: int, parent, side):
 
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-        dummy = TreeNode(-1, left=root)
-        target = search(root, key, parent=dummy, side="left")
-        return target
+        parent_of_root = TreeNode(-1, left=root)
+        target, parent, side = search(root, key, parent=parent_of_root, side="left")
+        if target is None:
+            return root
+
+        if target.left is None and target.right is None:
+            setattr(parent, side, None)
+        elif target.right is None:
+            setattr(parent, side, target.left)
+        elif target.left is None:
+            setattr(parent, side, target.right)
+
+        return parent_of_root.left

@@ -4,6 +4,7 @@ https://leetcode.com/problems/delete-node-in-a-bst/
 
 import pytest
 import tree
+import yaml
 
 from solution import Solution
 
@@ -24,104 +25,15 @@ def tc(**kwargs):
     )
 
 
-@pytest.mark.parametrize(
-    "root, key, expected",
-    [
-        tc(
-            test_id="Example 1",
-            root=[5, 3, 6, 2, 4, None, 7],
-            key=3,
-            expected=[5, 4, 6, 2, None, None, 7],
-        ),
-        tc(
-            test_id="Example 2",
-            root=[5, 3, 6, 2, 4, None, 7],
-            key=0,
-            expected=[5, 3, 6, 2, 4, None, 7],
-        ),
-        tc(
-            test_id="Example 3",
-            root=[],
-            key=0,
-            expected=[],
-        ),
-        tc(
-            test_id="single node, found",
-            root=[9],
-            key=9,
-            expected=[],
-        ),
-        tc(
-            test_id="single node, not found",
-            root=[9],
-            key=9,
-            expected=[9],
-        ),
-        tc(
-            test_id="delete 500, replaced by 550",
-            root=[
-                1000,
-                500,
-                2000,
-                250,
-                750,
-                1500,
-                2500,
-                100,
-                300,
-                600,
-                800,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                550,
-                700,
-            ],
-            key=500,
-            expected=[
-                1000,
-                550,
-                2000,
-                250,
-                750,
-                1500,
-                2500,
-                100,
-                300,
-                600,
-                800,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                None,
-                700,
-            ],
-        ),
-        tc(
-            test_id="leaf node",
-            root=[1000, 500],
-            key=500,
-            expected=[1000],
-        ),
-        tc(
-            test_id="node only right child",
-            root=[1000, 500, 2000, None, 750],
-            key=500,
-            expected=[1000, 750, 2000],
-        ),
-    ],
-)
-def test_solution(fut, root, key, expected):
+def get_test_cases():
+    with open("delete.yaml") as stream:
+        test_cases = yaml.safe_load(stream)
+
+    return [tc(**test_case) for test_case in test_cases]
+
+
+@pytest.mark.parametrize("root, key, expected", get_test_cases())
+def test_delete(fut, root, key, expected):
     root_tree = tree.breadth_first_build(root)
     expected_tree = tree.breadth_first_build(expected)
     actual_tree = fut(root_tree, key)
