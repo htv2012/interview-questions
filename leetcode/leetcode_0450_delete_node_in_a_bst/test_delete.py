@@ -4,8 +4,8 @@ https://leetcode.com/problems/delete-node-in-a-bst/
 
 import pytest
 import tree
-import yaml
 
+from common import parametrize
 from solution import Solution
 
 
@@ -15,24 +15,7 @@ def fut():
     return sol.deleteNode
 
 
-def tc(**kwargs):
-    test_id = kwargs.pop("test_id")
-    return pytest.param(
-        kwargs["root"],
-        kwargs["key"],
-        kwargs["expected"],
-        id=test_id,
-    )
-
-
-def get_test_cases():
-    with open("delete.yaml") as stream:
-        test_cases = yaml.safe_load(stream)
-
-    return [tc(**test_case) for test_case in test_cases]
-
-
-@pytest.mark.parametrize("root, key, expected", get_test_cases())
+@parametrize("delete.yaml", ["root", "key", "expected"])
 def test_delete(fut, root, key, expected):
     root_tree = tree.breadth_first_build(root)
     expected_tree = tree.breadth_first_build(expected)

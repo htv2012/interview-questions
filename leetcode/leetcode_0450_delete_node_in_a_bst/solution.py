@@ -21,6 +21,19 @@ def search(root: Optional[TreeNode], key: int, parent, side):
         return search(root.right, key, parent=root, side="right")
 
 
+def get_inorder_successor(root: Optional[TreeNode]):
+    if root is None:
+        return None
+
+    parent = root
+    node = root.right
+    while node and node.left:
+        parent = node
+        node = parent.left
+
+    return node, parent
+
+
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         parent_of_root = TreeNode(-1, left=root)
@@ -34,5 +47,8 @@ class Solution:
             setattr(parent, side, target.left)
         elif target.left is None:
             setattr(parent, side, target.right)
+        else:
+            # succ, succ_parent, succ_side = get_inorder_successor(target)
+            pass
 
         return parent_of_root.left
