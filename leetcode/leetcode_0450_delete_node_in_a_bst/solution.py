@@ -1,6 +1,10 @@
+import logging
 from typing import Optional
 
 from tree import TreeNode
+
+logger = logging.getLogger()
+
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -23,7 +27,7 @@ def search(root: Optional[TreeNode], key: int, parent, side):
 
 def get_inorder_successor(root: Optional[TreeNode]):
     if root is None:
-        return None
+        return None, None
 
     parent = root
     node = root.right
@@ -38,14 +42,17 @@ class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         parent_of_root = TreeNode(-1, left=root)
         target, parent, side = search(root, key, parent=parent_of_root, side="left")
+        logger.debug(f"{target=}, {parent=}, {side=}")
         if target is None:
             return root
 
+        logger.debug(f"{target.left=}, {target.right=}")
         if target.left is None and target.right is None:
             setattr(parent, side, None)
         elif target.right is None:
             setattr(parent, side, target.left)
         elif target.left is None:
+            logger.debug(f"{target.left=}, {target.right=}")
             setattr(parent, side, target.right)
         else:
             # succ, succ_parent, succ_side = get_inorder_successor(target)

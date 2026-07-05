@@ -40,6 +40,6 @@
   expected: [1000, 500]
 -
   test_id: node without left child
-  root: [1000, 500, 2000, None, 750]
-  key: 2000
+  root: [1000, 500, 2000, null, 750]
+  key: 500
   expected: [1000, 750, 2000]
