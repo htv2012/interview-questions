@@ -43,3 +43,8 @@
   root: [1000, 500, 2000, null, 750]
   key: 500
   expected: [1000, 750, 2000]
+-
+  test_id: complex
+  root: [1000, 500, 2000, null, null, 1500, 3000, null, null, 2500, 3500, 2100, null, null, null, null, 2200, null, 2300]
+  key: 2000
+  expected: [1000, 500, 2100, null, null, null, 2200, 1500, null, null, 2300, null, 3000, 2500, 3500]
