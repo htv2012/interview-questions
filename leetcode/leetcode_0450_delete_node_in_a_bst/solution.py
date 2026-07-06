@@ -27,15 +27,17 @@ def search(root: Optional[TreeNode], key: int, parent, side):
 
 def get_inorder_successor(root: Optional[TreeNode]):
     if root is None:
-        return None, None
+        return None, None, None
 
     parent = root
     node = root.right
+    side = "right"
     while node and node.left:
         parent = node
         node = parent.left
+        side = "left"
 
-    return node, parent
+    return node, parent, side
 
 
 class Solution:
