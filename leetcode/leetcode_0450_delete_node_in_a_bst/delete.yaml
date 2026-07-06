@@ -27,7 +27,7 @@
   test_id: node with 2 children
   root: [1000, 500, null, 300, 700, null, null, 600, 800]
   key: 500
-  expected: [100, 600, nulll, 300, 700, null, null, null, 800]
+  expected: [1000, 600, null, 300, 700, null, null, null, 800]
 -
   test_id: left leaf
   root: [1000, 500]

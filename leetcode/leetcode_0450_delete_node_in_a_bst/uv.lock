@@ -30,6 +30,12 @@ wheels = [
 ]
 
 [[package]]
+name = "drawtree"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/34/9c/4e9bc0c12958ec4299ad204af70ad577b8fe529767629b419b94365e4372/drawtree-0.1.2.tar.gz", hash = "sha256:862d26dfaffaa83d92bb3cefd53982b531bc2402bf3584492f1a6af086cc7ec8", size = 5395, upload-time = "2018-01-22T07:15:51.41Z" }
+
+[[package]]
 name = "executing"
 version = "2.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -100,6 +106,7 @@ source = { virtual = "." }
 
 [package.dev-dependencies]
 dev = [
+    { name = "drawtree" },
     { name = "ipython" },
     { name = "pytest" },
     { name = "pyyaml" },
@@ -111,6 +118,7 @@ dev = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "drawtree", specifier = ">=0.1.2" },
     { name = "ipython", specifier = ">=9.15.0" },
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "pyyaml", specifier = ">=6.0.3" },

@@ -57,7 +57,32 @@ class Solution:
             logger.debug(f"{target.left=}, {target.right=}")
             setattr(parent, side, target.right)
         else:
-            # succ, succ_parent, succ_side = get_inorder_successor(target)
-            pass
+            # by definition, the successor might has right child, but not left
+            succ, succ_parent, succ_side = get_inorder_successor(target)
+            logger.debug(f"{succ=} {succ_parent=} {succ_side=}, {succ.right=}")
+
+            # successor to take over the target's children
+            succ.left = target.left
+            right_most = succ  # right-most of successor
+            logger.debug(f"{right_most=}, {right_most.right=}")
+            while right_most.right is not None:
+                right_most = right_most.right
+                logger.debug(f"{right_most=}, {right_most.right=}")
+            right_most.right = target.right
+            logger.debug(
+                f"After fixing the right_most.right, {succ=}, {succ.right=}, {right_most=}, {right_most.right=}"
+            )
+
+            # disconnect the link between successor and its parent
+            setattr(succ_parent, succ_side, None)
+
+            # fix up the link to the target node
+            setattr(parent, side, succ)
+
+            logger.debug(f"{parent=}")
+            logger.debug(f"{root=}")
+            logger.debug(f"{target=}")
+            logger.debug(f"{succ=}")
+            logger.debug(f"{succ_parent=}")
 
         return parent_of_root.left
