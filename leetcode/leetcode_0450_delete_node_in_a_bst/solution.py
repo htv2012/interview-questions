@@ -68,6 +68,8 @@ class Solution:
             while right_most.right is not None:
                 right_most = right_most.right
                 logger.debug(f"{right_most=}, {right_most.right=}")
+            if right_most is target.right:
+                target.right = None
             right_most.right = target.right
             logger.debug(
                 f"After fixing the right_most.right, {succ=}, {succ.right=}, {right_most=}, {right_most.right=}"
