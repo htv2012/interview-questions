@@ -48,32 +48,30 @@ class Solution:
         if target is None:
             return root
 
-        logger.debug(f"{target.left=}, {target.right=}")
         if target.left is None and target.right is None:
             setattr(parent, side, None)
         elif target.right is None:
             setattr(parent, side, target.left)
         elif target.left is None:
-            logger.debug(f"{target.left=}, {target.right=}")
             setattr(parent, side, target.right)
         else:
             # by definition, the successor might has right child, but not left
             succ, succ_parent, succ_side = get_inorder_successor(target)
-            logger.debug(f"{succ=} {succ_parent=} {succ_side=}, {succ.right=}")
+            logger.debug(f"{succ=} {succ_parent=} {succ_side=}")
 
             # successor to take over the target's children
             succ.left = target.left
             right_most = succ  # right-most of successor
-            logger.debug(f"{right_most=}, {right_most.right=}")
+            logger.debug(f"{right_most=}")
             while right_most.right is not None:
                 right_most = right_most.right
                 logger.debug(f"{right_most=}, {right_most.right=}")
             if right_most is target.right:
                 target.right = None
+                logger.debug(f"{right_most=}")
+            target.right = None
             right_most.right = target.right
-            logger.debug(
-                f"After fixing the right_most.right, {succ=}, {succ.right=}, {right_most=}, {right_most.right=}"
-            )
+            logger.debug(f"After fixing the right_most.right, {succ=}, {right_most=}")
 
             # disconnect the link between successor and its parent
             setattr(succ_parent, succ_side, None)

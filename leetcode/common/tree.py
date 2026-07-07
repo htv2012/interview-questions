@@ -21,7 +21,7 @@ class TreeNode:
         self.right = right
 
     def __repr__(self):
-        return f"N({self.val})"
+        return f"{self.left.val if self.left else '*'}<{self.val}>{self.right.val if self.right else '*'}"
 
     def insert(self, node):
         if node.val < self.val:
