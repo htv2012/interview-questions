@@ -36,6 +36,11 @@ def tc(**kwargs):
         tc(test_id="Example 2", head=[], val=1, expected=[]),
         tc(test_id="Example 3", head=[7, 7, 7, 7], val=7, expected=[]),
         tc(test_id="all but one", head=[1, 2, 1, 1], val=1, expected=[2]),
+        tc(test_id="val not found", head=[1, 2, 3, 4], val=5, expected=[1, 2, 3, 4]),
+        tc(
+            test_id="load, not found", head=[1] * 100_000, val=2, expected=[1] * 100_000
+        ),
+        tc(test_id="load, found", head=[1] * 100_000, val=1, expected=[]),
     ],
 )
 def test_solution(fut, head, val, expected):

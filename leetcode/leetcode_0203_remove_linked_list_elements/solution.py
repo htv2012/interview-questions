@@ -20,9 +20,7 @@ class Solution:
                     left, right = None, head
                 else:
                     logging.debug("delete %r from %r", val, right)
-                    left.next = right.next
-                    left = right.next
-                    right = left.next
+                    left.next = right = right.next
             else:
                 left, right = right, right.next
 
