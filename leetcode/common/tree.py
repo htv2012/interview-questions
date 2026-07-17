@@ -6,9 +6,8 @@ import argparse
 import collections
 import itertools
 import json
+import logging
 from typing import Optional
-
-from drawtree.drawtree import drawtree
 
 
 class TreeNode:
@@ -134,16 +133,21 @@ def max_depth(root: Optional[TreeNode]) -> int:
     return max(left_depth, right_depth)
 
 
-def main():
-    """Draw tree via deserialize."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("json_text")
-    args = parser.parse_args()
-    print(args)
+def same_tree(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
+    que = collections.deque()
+    que.append((t1, t2))
 
-    root = deserialize(args.json_text)
-    drawtree(root)
+    while que:
+        n1, n2 = que.popleft()
+        logging.debug(f"Compare {n1} and {n2}")
+        if n1 is None and n2 is None:
+            continue
+        elif n1 is None or n2 is None:
+            return False
+        elif n1.val != n2.val:
+            return False
+        que.append((n1.left, n2.left))
+        que.append((n1.right, n2.right))
 
+    return True
 
-if __name__ == "__main__":
-    main()

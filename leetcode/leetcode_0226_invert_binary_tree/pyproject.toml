@@ -12,3 +12,8 @@ dev = [
     "ruff>=0.15.20",
     "ty>=0.0.53",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["../common"]
+log_cli="true"
+log_level="DEBUG"
