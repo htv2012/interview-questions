@@ -2,12 +2,15 @@
 Definition for a binary tree node.
 """
 
-import argparse
+import itertools
+import logging
 import collections
 import itertools
 import json
 import logging
 from typing import Optional
+
+logger = logging.getLogger()
 
 
 class TreeNode:
@@ -133,21 +136,63 @@ def max_depth(root: Optional[TreeNode]) -> int:
     return max(left_depth, right_depth)
 
 
-def same_tree(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
+def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
+    """Return True if the trees have the same structure and values."""
     que = collections.deque()
-    que.append((t1, t2))
+    que.appendleft((t1, t2))
 
     while que:
-        n1, n2 = que.popleft()
-        logging.debug(f"Compare {n1} and {n2}")
-        if n1 is None and n2 is None:
-            continue
-        elif n1 is None or n2 is None:
-            return False
-        elif n1.val != n2.val:
-            return False
-        que.append((n1.left, n2.left))
-        que.append((n1.right, n2.right))
+        node1, node2 = que.pop()
 
+        if node1 is None and node2 is None:
+            # both are None: they are the same
+            continue
+        elif node1 is None or node2 is None:
+            logger.debug(
+                f"Trees differ because one of the nodes is None: {node1=}, {node2=}"
+            )
+            return False
+
+        if node1.val != node2.val:
+            logger.debug(
+                f"Trees differ because values are different: {node1=}, {node2=}"
+            )
+            return False
+
+        que.append((node1.left, node2.left))
+        que.append((node1.right, node2.right))
+
+    return True
+
+    return True
+
+def dfs(root: Optional[TreeNode]):
+    stack = collections.deque()  # queue of (node, parent, level)
+    stack.append((root, None, 0))
+    done = {None}  # is this node processed?
+
+    while stack:
+        node, parent, level = stack.pop()
+        if node in done:
+            continue
+
+        if node.left in done and node.right in done:
+            yield node, parent, level
+            done.add(node)
+        else:
+            stack.append((node, parent, level))
+            stack.append((node.right, node, level + 1))
+            stack.append((node.left, node, level + 1))
+
+
+def verify_binary_search_tree(root: Optional[TreeNode]) -> bool:
+    values = [node.val for node in inorder_iter(root)]
+    logger.info("verify_binary_search_tree, values = %r", values)
+    left, right = itertools.tee(values)
+    next(right)
+    for prev, cur in zip(left, right):
+        if prev >= cur:
+            logger.info("Tree is not a valid BST due to these values: %r and %r", prev, cur)
+            return False
     return True
 
