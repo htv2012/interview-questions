@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Optional
 
 
@@ -10,11 +11,13 @@ class TreeNode:
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        que = []
+        que = deque([root])
+
         while que:
             node = que.popleft()
-            if que is None:
+            if node is None:
                 continue
+
             node.left, node.right = node.right, node.left
             que.append(node.left)
             que.append(node.right)

@@ -47,4 +47,4 @@ def test_solution(fut, root, expected):
     input_tree = tree.breadth_first_build(root)
     expected_tree = tree.breadth_first_build(expected)
     actual_tree = fut(input_tree)
-    assert tree.same_tree(actual_tree, expected_tree)
+    assert tree.compare_trees(actual_tree, expected_tree)
