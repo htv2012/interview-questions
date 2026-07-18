@@ -7,6 +7,7 @@ import logging
 import collections
 import itertools
 import json
+import logging
 from typing import Optional
 
 logger = logging.getLogger()
@@ -163,6 +164,7 @@ def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
 
     return True
 
+    return True
 
 def dfs(root: Optional[TreeNode]):
     stack = collections.deque()  # queue of (node, parent, level)
