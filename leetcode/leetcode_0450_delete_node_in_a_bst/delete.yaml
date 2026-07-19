@@ -1,0 +1,50 @@
+-
+  test_id: example1
+  expected: [5, 4, 6, 2, null, null, 7]
+  key: 3
+  root: [5, 3, 6, 2, 4, null, 7]
+-
+  test_id: example2
+  expected: [5, 3, 6, 2, 4, null, 7]
+  key: 0
+  root: [5, 3, 6, 2, 4, null, 7]
+-
+  test_id: example3
+  root: []
+  key: 0
+  expected: []
+-
+  test_id: single node, found
+  root: [1000]
+  key: 1000
+  expected: []
+-
+  test_id: single node, not found
+  root: [1000]
+  key: 1
+  expected: [1000]
+-
+  test_id: node with 2 children
+  root: [1000, 500, null, 300, 700, null, null, 600, 800]
+  key: 500
+  expected: [1000, 600, null, 300, 700, null, null, null, 800]
+-
+  test_id: left leaf
+  root: [1000, 500]
+  key: 500
+  expected: [1000]
+-
+  test_id: right leaf
+  root: [1000, 500, 2000]
+  key: 2000
+  expected: [1000, 500]
+-
+  test_id: node without left child
+  root: [1000, 500, 2000, null, 750]
+  key: 500
+  expected: [1000, 750, 2000]
+-
+  test_id: complex
+  root: [1000, 500, 2000, null, null, 1500, 3000, null, null, 2500, 3500, 2100, null, null, null, null, 2200, null, 2300]
+  key: 2000
+  expected: [1000, 500, 2100, null, null, null, 2200, 1500, null, null, 2300, null, 3000, 2500, 3500]
