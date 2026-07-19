@@ -18,13 +18,13 @@ class Solution:
         index[None] = len(index)
         in_list = [[node.val, index[node.random]] for _, node in iter_nodes(head)]
 
-        li = [Node(val) for val, _ in in_list]
-        li.append(None)  # Last element: The null node
+        out_list = [Node(val) for val, _ in in_list]
+        out_list.append(None)
 
-        for i in range(len(li) - 1):
-            li[i].next = li[i + 1]
+        for i in range(len(out_list) - 1):
+            out_list[i].next = out_list[i + 1]
 
-        for (_, random_index), node in zip(in_list, li):
-            node.random = li[random_index]
+        for (_, irand), node in zip(in_list, out_list):
+            node.random = out_list[irand]
 
-        return li[0]
+        return out_list[0]
