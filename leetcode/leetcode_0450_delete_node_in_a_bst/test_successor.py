@@ -4,7 +4,7 @@ https://leetcode.com/problems/delete-node-in-a-bst/
 
 import tree
 
-from common import parametrize
+from testlib import parametrize
 from solution import get_inorder_successor
 
 
