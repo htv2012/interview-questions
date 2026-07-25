@@ -12,13 +12,8 @@ class ListNode:
         self.next = next
 
     def __repr__(self):
-        values = []
-        node = self
-        while node:
-            values.append(node.val)
-            node = node.next
-        values = reprlib.repr(values)
-        return values.replace("[", "<ListNode ").replace("]", ">")
+        return f"<ListNode {self.val}>"
+
 
     def __iter__(self):
         node = self
