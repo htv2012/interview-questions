@@ -48,6 +48,8 @@ class ListNode:
         return root
 
 
+build = ListNode.from_iterable
+
 def iter_list(head: ListNode):
     while head is not None:
         yield head
