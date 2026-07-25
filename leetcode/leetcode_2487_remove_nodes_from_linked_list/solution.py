@@ -1,31 +1,20 @@
-import collections
-
 from list_node import ListNode
 
 
 class Solution:
     def removeNodes(self, head: ListNode | None) -> ListNode | None:
-        # Place nodes into a stack
-        population = []
+        # Place nodes into a monotonic stack
+        stack = []
         node = head
         while node is not None:
-            population.append(node)
+            while stack and stack[-1].val < node.val:
+                stack.pop()
+            stack.append(node)
             node = node.next
 
-        if not population:
-            return None
-
-        # Select qualified nodes
-        selected = collections.deque([None])
-        selected.appendleft(population.pop())
-        while population:
-            node = population.pop()
-            if node.val >= selected[0].val:
-                selected.appendleft(node)
-
-        # Fix the next pointers
-        for i, node in enumerate(selected, 1):
+        stack.append(None)
+        for i, node in enumerate(stack, 1):
             if node is not None:
-                node.next = selected[i]
+                node.next = stack[i]
 
-        return selected[0]
+        return stack[0]
