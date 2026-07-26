@@ -1,0 +1,18 @@
+[project]
+name = "leetcode-0147"
+version = "0.1.0"
+description = "Insertion Sort List"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.0",
+    "ty>=0.0.63",
+]
+[tool.pytest.ini_options]
+pythonpath=[".", "../common"]
+log_cli="true"
+log_level="DEBUG"
