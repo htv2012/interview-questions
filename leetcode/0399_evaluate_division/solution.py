@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/evaluate-division/
 import collections
 import contextlib
 import functools
 import operator
-from typing import List
 
 
 def find_path_weight(graph, src, dest):
@@ -41,8 +39,8 @@ def calculate(graph, src, dest):
 
 class Solution:
     def calcEquation(
-        self, equations: List[List[str]], values: List[float], queries: List[List[str]]
-    ) -> List[float]:
+        self, equations: list[list[str]], values: list[float], queries: list[list[str]]
+    ) -> list[float]:
         # Create a graph: {'src': {'dest': src/dest}}
         graph = collections.defaultdict(dict)
         for (src, dest), weight in zip(equations, values):

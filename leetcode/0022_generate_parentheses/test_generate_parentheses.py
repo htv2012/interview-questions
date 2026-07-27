@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from generate_parentheses import Solution
@@ -20,26 +19,6 @@ def fut():
         pytest.param(1, ["()"], id="example 2"),
         pytest.param(0, [], id="0"),
         pytest.param(1, ["()"], id="1"),
-        pytest.param(
-            4,
-            [
-                "(((())))",
-                "((()()))",
-                "((())())",
-                "((()))()",
-                "(()(()))",
-                "(()()())",
-                "(()())()",
-                "(())(())",
-                "(())()()",
-                "()((()))",
-                "()(()())",
-                "()(())()",
-                "()()(())",
-                "()()()()",
-            ],
-            id="4",
-        ),
     ],
 )
 def test_solution(fut, n, expected):

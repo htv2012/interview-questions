@@ -1,10 +1,9 @@
-from typing import List, Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def preorderTraversal(self, root: TreeNode | None) -> list[int]:
         stack = [root]
         out = []
 

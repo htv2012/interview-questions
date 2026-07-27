@@ -1,4 +1,3 @@
-from typing import Optional
 
 
 # Definition for singly-linked list.
@@ -18,7 +17,7 @@ class ListNode:
 
 
 class Solution:
-    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def middleNode(self, head: ListNode | None) -> ListNode | None:
         dummy = ListNode(0, head)
         fast = slow = dummy
         step = 0

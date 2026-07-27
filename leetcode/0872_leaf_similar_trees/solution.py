@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/leaf-similar-trees/?envType=daily-question&envId=2024-03-13
 from typing import Optional
 

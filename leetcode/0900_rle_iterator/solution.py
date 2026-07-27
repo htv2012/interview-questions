@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/rle-iterator/description/
-from typing import List
 
 
 class RLEIterator:
-    def __init__(self, encoding: List[int]):
+    def __init__(self, encoding: list[int]):
         self.it = self.decode(encoding)
 
     def decode(self, encoding):

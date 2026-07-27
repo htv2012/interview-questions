@@ -1,11 +1,8 @@
-#!/usr/bin/env python3
-from typing import Optional
-
 from list_node import ListNode
 
 
 class Solution:
-    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def detectCycle(self, head: ListNode | None) -> ListNode | None:
         p_hare = p_tortoise = head
         counter = 0
 

@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/description/?envType=daily-question&envId=2024-04-08
-from typing import List
 
 
 class Solution:
-    def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
+    def countStudents(self, students: list[int], sandwiches: list[int]) -> int:
         students_count = len(students)
         counter = 0
         while counter <= students_count:

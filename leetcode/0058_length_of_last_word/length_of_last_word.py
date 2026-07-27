@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         # Traverse from the right to left, skip spaces

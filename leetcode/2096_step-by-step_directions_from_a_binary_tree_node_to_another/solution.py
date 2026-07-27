@@ -1,9 +1,8 @@
-from typing import Optional
 
 from tree import TreeNode
 
 
-def dfs(node: Optional[TreeNode], path: tuple = None):
+def dfs(node: TreeNode | None, path: tuple = None):
     if node is None:
         return
 
@@ -15,7 +14,7 @@ def dfs(node: Optional[TreeNode], path: tuple = None):
 
 class Solution:
     def getDirections(
-        self, root: Optional[TreeNode], startValue: int, destValue: int
+        self, root: TreeNode | None, startValue: int, destValue: int
     ) -> str:
         start_path = dest_path = None
 

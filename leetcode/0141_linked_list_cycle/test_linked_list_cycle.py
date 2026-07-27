@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from linked_list_cycle import Solution
@@ -18,7 +17,7 @@ def fut():
         pytest.param([3, 2, 0, -4], 1, True, id="example 1"),
         pytest.param([1, 2], 0, True, id="example 2"),
         pytest.param([1], -1, False, id="example 3"),
-        pytest.param([1,2,3], 2, True, id="cycle at last node"),
+        pytest.param([1, 2, 3], 2, True, id="cycle at last node"),
         pytest.param([], 0, False, id="empty"),
         pytest.param([1], 0, True, id="single node with cycle"),
     ],

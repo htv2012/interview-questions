@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/clone-graph/description/
 from typing import Optional
 

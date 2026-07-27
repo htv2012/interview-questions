@@ -1,5 +1,3 @@
-from typing import Optional
-
 from list_node import ListNode
 
 
@@ -13,8 +11,8 @@ def list_length(head):
 
 class Solution:
     def addTwoNumbers(
-        self, l1: Optional[ListNode], l2: Optional[ListNode]
-    ) -> Optional[ListNode]:
+        self, l1: ListNode | None, l2: ListNode | None
+    ) -> ListNode | None:
         """Solution without reversing the lists."""
         # raise NotImplementedError()
         len1 = list_length(l1)

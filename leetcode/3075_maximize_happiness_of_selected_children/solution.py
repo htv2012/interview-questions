@@ -1,9 +1,8 @@
 import heapq
-from typing import List
 
 
 class Solution:
-    def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
+    def maximumHappinessSum(self, happiness: list[int], k: int) -> int:
         """
         Algorithm:
         1. Sort the array, due to large size, use heapq instead of sort()

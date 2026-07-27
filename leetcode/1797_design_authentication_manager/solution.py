@@ -1,5 +1,7 @@
 import logging
 
+logger = logging.getLogger()
+
 
 class AuthenticationManager:
     """
@@ -35,10 +37,10 @@ class AuthenticationManager:
         the given tokenId, the request is ignored, and nothing happens.
         """
         if tokenId not in self.id2time:
-            logging.debug("Token %r not found, not renewed", tokenId)
+            logger.debug("Token %r not found, not renewed", tokenId)
             return
         if currentTime - self.id2time[tokenId] >= self.ttl:
-            logging.debug("Token %r expired, not renewed", tokenId)
+            logger.debug("Token %r expired, not renewed", tokenId)
             return
         self.id2time[tokenId] = currentTime
 

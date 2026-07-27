@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 # Definition for singly-linked list.
-from typing import Optional
 
 
 class ListNode:
@@ -39,8 +37,8 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(
-        self, list1: Optional[ListNode], list2: Optional[ListNode]
-    ) -> Optional[ListNode]:
+        self, list1: ListNode | None, list2: ListNode | None
+    ) -> ListNode | None:
         root = None
         node = None
         prev = None

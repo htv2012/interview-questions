@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from container_with_most_water import Solution

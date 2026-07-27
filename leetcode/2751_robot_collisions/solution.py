@@ -9,7 +9,6 @@ How do we detect the end game after each step?
 import collections
 import logging
 import re
-from typing import List
 
 logging.basicConfig(level="DEBUG")
 Robot = collections.namedtuple("Robot", ["position", "health", "direction", "robot_id"])
@@ -26,8 +25,8 @@ def downgrade_health(robot: Robot):
 
 class Solution:
     def survivedRobotsHealths(
-        self, positions: List[int], healths: List[int], directions: str
-    ) -> List[int]:
+        self, positions: list[int], healths: list[int], directions: str
+    ) -> list[int]:
         # Sort the robots by positions to make it easier to do calculations
         # robot_id are used to keep track of the robot's order
         board = sorted(

@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/word-break/description/
-from typing import List
 
 
 class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    def wordBreak(self, s: str, wordDict: list[str]) -> bool:
         found = [False] * len(s) + [True]
 
         for index in range(len(s) - 1, -1, -1):

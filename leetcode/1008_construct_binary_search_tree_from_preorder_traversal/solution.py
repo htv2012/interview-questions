@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/
 from typing import List, Optional
 

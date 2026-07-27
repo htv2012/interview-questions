@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-from typing import List
-
-
-def search_in_rotated_sorted_array(nums: List[int], target: int) -> int:
+def search_in_rotated_sorted_array(nums: list[int], target: int) -> int:
     array_size = len(nums)
     if array_size == 0:
         return -1
@@ -30,5 +26,5 @@ def search_in_rotated_sorted_array(nums: List[int], target: int) -> int:
 
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+    def search(self, nums: list[int], target: int) -> int:
         return search_in_rotated_sorted_array(nums, target)

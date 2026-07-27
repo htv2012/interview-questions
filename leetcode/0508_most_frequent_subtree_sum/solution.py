@@ -1,9 +1,7 @@
-from typing import List, Optional
-
 from tree import TreeNode
 
 
-def find_frequent_tree_sum(root: Optional[TreeNode], freq: dict):
+def find_frequent_tree_sum(root: TreeNode | None, freq: dict):
     if root is None:
         return 0
 
@@ -18,7 +16,7 @@ def find_frequent_tree_sum(root: Optional[TreeNode], freq: dict):
 
 
 class Solution:
-    def findFrequentTreeSum(self, root: Optional[TreeNode]) -> List[int]:
+    def findFrequentTreeSum(self, root: TreeNode | None) -> list[int]:
         freq = {}
         find_frequent_tree_sum(root, freq)
 

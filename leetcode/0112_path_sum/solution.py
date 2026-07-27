@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/path-sum/
-from typing import Optional
 
 from tree import TreeNode
 
@@ -19,5 +17,5 @@ def all_paths(root, path=None):
 
 
 class Solution:
-    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+    def hasPathSum(self, root: TreeNode | None, targetSum: int) -> bool:
         return any(sum(path) == targetSum for path in all_paths(root))

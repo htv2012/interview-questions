@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from tree import TreeNode, breadth_first_build
 
 from solution import find

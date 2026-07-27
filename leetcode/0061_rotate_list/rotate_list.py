@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-from typing import Iterable, Optional
+from collections.abc import Iterable
 
 
 # Definition for singly-linked list.
@@ -17,7 +16,7 @@ class ListNode:
         return f"<ListNode count={len(values)}, nodes={values}>"
 
 
-def from_iterable(it: Iterable) -> Optional[ListNode]:
+def from_iterable(it: Iterable) -> ListNode | None:
     root = None
     prev = None
     node = None
@@ -32,7 +31,7 @@ def from_iterable(it: Iterable) -> Optional[ListNode]:
 
 
 class Solution:
-    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def rotateRight(self, head: ListNode | None, k: int) -> ListNode | None:
         # Edge cases
         if not head:
             return None

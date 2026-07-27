@@ -19,5 +19,8 @@ find . -type f -name Makefile | while IFS= read -r makefile; do
     cd "$projectDir"
     set +x
     make
+    if [ $? -ne 0 ]; then
+        echo "ERROR in $projectDir"
+    fi
     cd "$top"
 done

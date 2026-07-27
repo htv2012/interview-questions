@@ -1,8 +1,7 @@
-from typing import List
 
 
 class Solution:
-    def minOperations(self, logs: List[str]) -> int:
+    def minOperations(self, logs: list[str]) -> int:
         depth = 0
         for name in logs:
             if name == "../":

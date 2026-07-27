@@ -1,10 +1,8 @@
-from typing import List, Optional
-
 from tree import TreeNode
 
 
 class Solution:
-    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+    def rightSideView(self, root: TreeNode | None) -> list[int]:
         right_side = []
         queue = [(root, 0)]
 

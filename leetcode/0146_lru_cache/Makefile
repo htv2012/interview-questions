@@ -1,20 +1,31 @@
-targets: quick
+.PHONY: all clean install lab lint py run test
 
-sandbox:
-	python3 -i sandbox.py
+### Default target(s)
+all: test
 
-quick: lint
-	PYTHONPATH=../lib pytest -s -vv -m 'not slow'
+### Perform static analysis
+lint:
+	uv run ruff check --select I --fix . --quiet
+	uv run ruff format . --quiet
+	uv run ruff check . --fix --quiet
 
-slow: lint
-	PYTHONPATH=../lib pytest -s -vv -m 'slow'
+### Run unit tests
+test: lint
+	PYTHONPATH=../common uv run pytest -s -vv
 
-all: lint
-	PYTHONPATH=../lib pytest -s -vv
+### Clean up generated files
+clean:
+	uv clean
+	rm -fr .ruff_cache .venv
 
-lint: format
-	ruff check . --fix
+### Start a Python interpreter
+py:
+	uv run ipython
 
-format:
-	ruff format .
-	ruff check --select I --fix .
+### Start a Jupyter Lab
+lab:
+	uv run jupyter lab
+
+### Install this tool locally
+install:
+	uv tool install --upgrade .

@@ -1,9 +1,8 @@
 import itertools
-from typing import List
 
 
 class Solution:
-    def generate(self, numRows: int) -> List[List[int]]:
+    def generate(self, numRows: int) -> list[list[int]]:
         out = []
         for i in range(numRows):
             if i == 0:

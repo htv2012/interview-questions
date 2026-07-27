@@ -5,6 +5,8 @@ import pytest
 
 from solution import AuthenticationManager
 
+logger = logging.getLogger()
+
 Step = collections.namedtuple("Step", ["action", "args", "expected"])
 
 
@@ -29,16 +31,16 @@ Step = collections.namedtuple("Step", ["action", "args", "expected"])
 def test_solution(steps):
     obj = None
     for index, (action, args, expected) in enumerate(steps):
-        logging.debug("============================================================")
+        logger.debug("============================================================")
         args_str = ", ".join(repr(arg) for arg in args)
-        logging.debug("Step [%d] %s(%s)", index, action, args_str)
+        logger.debug("Step [%d] %s(%s)", index, action, args_str)
 
         if action == "AuthenticationManager":
             obj = AuthenticationManager(*args)
         else:
-            logging.debug("expected=%r", expected)
+            logger.debug("expected=%r", expected)
             method = getattr(obj, action)
             assert method is not None
             actual = method(*args)
-            logging.debug("actual=%r", actual)
+            logger.debug("actual=%r", actual)
             assert actual == expected

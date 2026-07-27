@@ -1,9 +1,7 @@
-from typing import Optional
-
 from tree import TreeNode
 
 
-def max_depth(root: Optional[TreeNode]) -> int:
+def max_depth(root: TreeNode | None) -> int:
     if root is None:
         return 0
     left_depth = max_depth(root.left) + 1
@@ -11,7 +9,7 @@ def max_depth(root: Optional[TreeNode]) -> int:
     return max(left_depth, right_depth)
 
 
-def is_balance(root: Optional[TreeNode], depth: int = 0) -> tuple[bool, int]:
+def is_balance(root: TreeNode | None, depth: int = 0) -> tuple[bool, int]:
     if root is None:
         return True, depth
 
@@ -25,6 +23,6 @@ def is_balance(root: Optional[TreeNode], depth: int = 0) -> tuple[bool, int]:
 
 
 class Solution:
-    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+    def isBalanced(self, root: TreeNode | None) -> bool:
         balance, _ = is_balance(root)
         return balance

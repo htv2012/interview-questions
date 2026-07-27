@@ -1,9 +1,5 @@
-#!/usr/bin/env python3
-from typing import List
-
-
 class Solution:
-    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+    def merge(self, intervals: list[list[int]]) -> list[list[int]]:
         intervals.sort()
         it = iter(intervals)
         out = [next(it)]

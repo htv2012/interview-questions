@@ -1,6 +1,5 @@
 import itertools
 import sqlite3
-from typing import List
 
 CREATE_POST_TABLE = """
 CREATE TABLE post (
@@ -56,7 +55,7 @@ class Twitter:
         self.db.execute(INSERT_POST, (userId, tweetId, stamp))
         self.db.commit()
 
-    def getNewsFeed(self, userId: int) -> List[int]:
+    def getNewsFeed(self, userId: int) -> list[int]:
         """
         Retrieves the 10 most recent tweet IDs in the user's news
         feed. Each item in the news feed must be posted by users who the

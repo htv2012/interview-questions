@@ -1,11 +1,8 @@
-#!/usr/bin/env python3
-from typing import List, Optional
-
 from list_node import ListNode
 
 
 class Solution:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    def mergeKLists(self, lists: list[ListNode | None]) -> ListNode | None:
         pre_head = ListNode(0)
         tail = pre_head
         lists = [node for node in lists if node is not None]
