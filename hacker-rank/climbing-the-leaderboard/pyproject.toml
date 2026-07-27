@@ -1,5 +1,5 @@
 [project]
-name = "flip-matrix"
+name = "climbing-the-leaderboard"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -8,6 +8,7 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+    "ipython>=9.15.0",
     "pytest>=9.1.1",
     "ruff>=0.16.0",
 ]

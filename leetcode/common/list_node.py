@@ -1,7 +1,5 @@
 import itertools
 import logging
-import reprlib
-from typing import Optional
 
 logger = logging.getLogger()
 
@@ -13,7 +11,6 @@ class ListNode:
 
     def __repr__(self):
         return f"<ListNode {self.val}>"
-
 
     def __iter__(self):
         node = self
@@ -45,13 +42,14 @@ class ListNode:
 
 build = ListNode.from_iterable
 
+
 def iter_list(head: ListNode):
     while head is not None:
         yield head
         head = head.next
 
 
-def count_nodes(head: Optional[ListNode]) -> int:
+def count_nodes(head: ListNode | None) -> int:
     return len(list(iter_list(head)))
 
 
@@ -69,7 +67,7 @@ def assert_values(head: ListNode, expected: list):
     assert node is None
 
 
-def verify_values(head: Optional[ListNode], expected_values: list) -> bool:
+def verify_values(head: ListNode | None, expected_values: list) -> bool:
     marker = object()
     pairs = itertools.zip_longest(iter_list(head), expected_values, fillvalue=marker)
     for index, (node, expected_value) in enumerate(pairs):

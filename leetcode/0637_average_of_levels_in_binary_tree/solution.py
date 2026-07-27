@@ -1,6 +1,5 @@
 import collections
 import statistics
-from typing import List, Optional
 
 from tree import TreeNode
 
@@ -17,7 +16,7 @@ def breadth_first_iter(node: TreeNode, level: int = 0):
 
 
 class Solution:
-    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+    def averageOfLevels(self, root: TreeNode | None) -> list[float]:
         out = []
         for node, level in breadth_first_iter(root):
             while len(out) <= level:

@@ -4,7 +4,7 @@
 all: test
 
 edit:
-	$(EDITOR) main.py
+	mvim *.py
 
 ### Perform static analysis
 lint:

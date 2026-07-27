@@ -1,10 +1,9 @@
 import io
-from typing import Optional
 
-from common.tree import TreeNode
+from tree import TreeNode
 
 
-def tree2str(root: Optional[TreeNode], buffer: io.StringIO):
+def tree2str(root: TreeNode | None, buffer: io.StringIO):
     if root is None:
         return
 
@@ -24,7 +23,7 @@ def tree2str(root: Optional[TreeNode], buffer: io.StringIO):
 
 
 class Solution:
-    def tree2str(self, root: Optional[TreeNode]) -> str:
+    def tree2str(self, root: TreeNode | None) -> str:
         buffer = io.StringIO()
         tree2str(root, buffer)
         return buffer.getvalue()

@@ -2,13 +2,10 @@
 Definition for a binary tree node.
 """
 
-import itertools
-import logging
 import collections
 import itertools
 import json
 import logging
-from typing import Optional
 
 logger = logging.getLogger()
 
@@ -75,12 +72,12 @@ def breadth_first_build(seq):
     return root
 
 
-def deserialize(text: str) -> Optional[TreeNode]:
+def deserialize(text: str) -> TreeNode | None:
     seq = json.loads(text)
     return breadth_first_build(seq)
 
 
-def serialize(root: Optional[TreeNode]) -> str:
+def serialize(root: TreeNode | None) -> str:
     queue = collections.deque()
     if root is not None:
         queue.append(root)
@@ -101,7 +98,7 @@ def serialize(root: Optional[TreeNode]) -> str:
     return json.dumps(out, separators=(",", ":"))
 
 
-def pre_order_iter(root: Optional[TreeNode]):
+def pre_order_iter(root: TreeNode | None):
     if root is None:
         return
     yield root
@@ -120,7 +117,7 @@ def breadth_first_iter(node: TreeNode, level: int = 0):
         queue.append((node.right, level + 1))
 
 
-def inorder_iter(node: Optional[TreeNode]):
+def inorder_iter(node: TreeNode | None):
     if node is None:
         return
     yield from inorder_iter(node.left)
@@ -128,7 +125,7 @@ def inorder_iter(node: Optional[TreeNode]):
     yield from inorder_iter(node.right)
 
 
-def max_depth(root: Optional[TreeNode]) -> int:
+def max_depth(root: TreeNode | None) -> int:
     if root is None:
         return 0
     left_depth = max_depth(root.left) + 1
@@ -136,7 +133,7 @@ def max_depth(root: Optional[TreeNode]) -> int:
     return max(left_depth, right_depth)
 
 
-def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
+def compare_trees(t1: TreeNode | None, t2: TreeNode | None) -> bool:
     """Return True if the trees have the same structure and values."""
     que = collections.deque()
     que.appendleft((t1, t2))
@@ -166,7 +163,8 @@ def compare_trees(t1: Optional[TreeNode], t2: Optional[TreeNode]) -> bool:
 
     return True
 
-def dfs(root: Optional[TreeNode]):
+
+def dfs(root: TreeNode | None):
     stack = collections.deque()  # queue of (node, parent, level)
     stack.append((root, None, 0))
     done = {None}  # is this node processed?
@@ -185,14 +183,15 @@ def dfs(root: Optional[TreeNode]):
             stack.append((node.left, node, level + 1))
 
 
-def verify_binary_search_tree(root: Optional[TreeNode]) -> bool:
+def verify_binary_search_tree(root: TreeNode | None) -> bool:
     values = [node.val for node in inorder_iter(root)]
     logger.info("verify_binary_search_tree, values = %r", values)
     left, right = itertools.tee(values)
     next(right)
     for prev, cur in zip(left, right):
         if prev >= cur:
-            logger.info("Tree is not a valid BST due to these values: %r and %r", prev, cur)
+            logger.info(
+                "Tree is not a valid BST due to these values: %r and %r", prev, cur
+            )
             return False
     return True
-
