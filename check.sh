@@ -6,12 +6,11 @@ banner() {
     echo "# ======================================================================"
 }
 
-set -e
-
 top=$(PWD)
 
 # Find all files named Makefile and loop over each line safely
-find . -type f -name Makefile | while IFS= read -r makefile; do
+find . -type f -name Makefile | \
+while IFS= read -r makefile; do
     # Extract the containing directory
     projectDir=$(dirname "$makefile")
     banner "$projectDir"
@@ -21,6 +20,7 @@ find . -type f -name Makefile | while IFS= read -r makefile; do
     make
     if [ $? -ne 0 ]; then
         echo "ERROR in $projectDir"
+        break
     fi
     cd "$top"
 done

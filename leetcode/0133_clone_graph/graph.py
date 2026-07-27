@@ -24,6 +24,7 @@ def assert_same_graph(cloned: Node, original: Node):
         n1, n2 = que.pop()
         if n1 is None and n2 is None:
             continue
+
         if n1.val in done:
             continue
 
