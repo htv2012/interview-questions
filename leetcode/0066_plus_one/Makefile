@@ -1,5 +1,5 @@
 test: lint
-	PYTHONPATH=../common pytest -s -vv
+	PYTHONPATH=../../_common pytest -s -vv
 
 lint: format
 	ruff . --fix
