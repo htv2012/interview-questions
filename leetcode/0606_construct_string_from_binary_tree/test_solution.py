@@ -1,5 +1,5 @@
 import pytest
-from common.tree import breadth_first_build
+from tree import breadth_first_build
 
 
 @pytest.mark.parametrize(

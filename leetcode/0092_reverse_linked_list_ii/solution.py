@@ -1,11 +1,9 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/reverse-linked-list-ii/description/
-from typing import Optional
 
 from list_node import ListNode
 
 
-def get_node_at_position(head: Optional[ListNode], position: int) -> Optional[ListNode]:
+def get_node_at_position(head: ListNode | None, position: int) -> ListNode | None:
     if position == 0:
         return ListNode(0, next=head)
 
@@ -16,8 +14,8 @@ def get_node_at_position(head: Optional[ListNode], position: int) -> Optional[Li
 
 class Solution:
     def reverseBetween(
-        self, head: Optional[ListNode], left: int, right: int
-    ) -> Optional[ListNode]:
+        self, head: ListNode | None, left: int, right: int
+    ) -> ListNode | None:
         """
         left = 2, right = 4
         head -> 1 -> 2 -> 3 -> 4 -> 5

@@ -1,5 +1,3 @@
-from typing import Optional
-
 from list_node import ListNode
 
 
@@ -12,7 +10,7 @@ def iter_nodes(head: ListNode):
 
 
 class Solution:
-    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+    def partition(self, head: ListNode | None, x: int) -> ListNode | None:
         lt = lt_tail = ListNode()  # Nodes with values less than x
         ge = ge_tail = ListNode()  # Nodes with values greater than or equal to x
 

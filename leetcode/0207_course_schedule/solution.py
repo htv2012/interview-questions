@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/course-schedule/description/
-from typing import List
 
 
 class Solution:
-    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
         dependency = {i: set() for i in range(numCourses)}
         for course, predecessor in prerequisites:
             dependency[course].add(predecessor)

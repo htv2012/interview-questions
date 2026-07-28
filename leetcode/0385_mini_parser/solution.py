@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/mini-parser/description/
 
 from nested_integer import NestedInteger
@@ -18,9 +17,7 @@ def tokenize(text: str) -> list:
                 yield int(buf)
             buf = ""
             yield letter
-        elif letter.isdigit():
-            buf += letter
-        elif letter == "-":
+        elif letter.isdigit() or letter == "-":
             buf += letter
         else:
             raise ValueError(f"Unknown char: {letter!r}")

@@ -1,5 +1,4 @@
 import collections
-from typing import Optional
 
 from tree import TreeNode
 
@@ -16,7 +15,7 @@ def breadth_first_iter(node: TreeNode, level: int = 0):
 
 
 class Solution:
-    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+    def findBottomLeftValue(self, root: TreeNode | None) -> int:
         out = None
         last_level = -1
 

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/valid-sudoku/description/
 import logging
 from typing import List

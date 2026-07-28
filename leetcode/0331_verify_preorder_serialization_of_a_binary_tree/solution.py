@@ -25,4 +25,4 @@ class Solution:
             value = tokens.popleft()
             if value == "#":
                 break
-            stack.push(("value"))
+            stack.push("value")

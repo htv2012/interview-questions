@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from nested_integer import NestedInteger

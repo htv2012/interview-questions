@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-
 def find_first(haystack, needle, index=0) -> int:
     needle_length = len(needle)
     haystack_length = len(haystack)

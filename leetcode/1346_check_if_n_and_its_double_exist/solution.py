@@ -1,8 +1,7 @@
-from typing import List
 
 
 class Solution:
-    def checkIfExist(self, arr: List[int]) -> bool:
+    def checkIfExist(self, arr: list[int]) -> bool:
         found = set()
         for number in arr:
             if number in found:

@@ -29,14 +29,6 @@ def same_tree(root1, root2):
 )
 def test_solution(fut, root, expected):
     root = tree.breadth_first_build(root)
-    print("\nroot:")
-    tree.drawtree(root)
-
     expected = tree.breadth_first_build(expected)
-    print("expected:")
-    tree.drawtree(expected)
-
     actual = fut(root)
-    print("actual:")
-    tree.drawtree(actual)
     assert same_tree(actual, expected)

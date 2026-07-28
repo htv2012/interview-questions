@@ -1,10 +1,9 @@
 import heapq
 from collections import deque
-from typing import List
 
 
 class Solution:
-    def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
+    def deckRevealedIncreasing(self, deck: list[int]) -> list[int]:
         heapq.heapify(deck)
         size = len(deck)
         idx = deque(range(size))

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
 from typing import List, Optional
 

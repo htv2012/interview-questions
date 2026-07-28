@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/sudoku-solver/
-from typing import List
 
 EMPTY = "."
 DIGITS = "123456789"
@@ -74,5 +72,5 @@ def solve(board) -> bool:
 
 
 class Solution:
-    def solveSudoku(self, board: List[List[str]]) -> None:
+    def solveSudoku(self, board: list[list[str]]) -> None:
         return solve(board)

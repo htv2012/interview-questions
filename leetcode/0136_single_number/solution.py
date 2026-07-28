@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def singleNumber(self, nums: List[int]) -> int:
+    def singleNumber(self, nums: list[int]) -> int:
         seen = set()
         for number in nums:
             if number in seen:

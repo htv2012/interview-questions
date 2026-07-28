@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-from typing import Optional
-
-
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -44,7 +40,7 @@ class ListNode:
 
 
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+    def removeNthFromEnd(self, head: ListNode | None, n: int) -> ListNode | None:
         """Algorithm.
 
         Maintain front and back pointers which is N nodes apart

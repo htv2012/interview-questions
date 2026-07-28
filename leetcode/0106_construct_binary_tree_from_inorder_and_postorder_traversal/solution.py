@@ -1,10 +1,8 @@
-from typing import List, Optional
-
 from tree import TreeNode
 
 
 class Solution:
-    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+    def buildTree(self, inorder: list[int], postorder: list[int]) -> TreeNode | None:
         if not inorder:
             return None
 

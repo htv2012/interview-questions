@@ -1,9 +1,7 @@
-from typing import Optional
-
 from tree import TreeNode
 
 
-def inorder_iter(node: Optional[TreeNode]):
+def inorder_iter(node: TreeNode | None):
     if node is None:
         return
     yield from inorder_iter(node.left)
@@ -11,7 +9,7 @@ def inorder_iter(node: Optional[TreeNode]):
     yield from inorder_iter(node.right)
 
 
-def gtt(root: Optional[TreeNode], extra: int = 0) -> Optional[TreeNode]:
+def gtt(root: TreeNode | None, extra: int = 0) -> TreeNode | None:
     if root is None:
         return None
 
@@ -32,7 +30,7 @@ class Solution:
     def __init__(self):
         self.sum = 0
 
-    def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def convertBST(self, root: TreeNode | None) -> TreeNode | None:
         if root is None:
             return None
         self.convertBST(root.right)

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from rotate_list import ListNode, Solution, from_iterable

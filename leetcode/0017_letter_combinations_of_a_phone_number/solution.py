@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 from itertools import product
-from typing import List
 
 
 class Solution:
-    def letterCombinations(self, digits: str) -> List[str]:
+    def letterCombinations(self, digits: str) -> list[str]:
         if not digits:
             return []
 

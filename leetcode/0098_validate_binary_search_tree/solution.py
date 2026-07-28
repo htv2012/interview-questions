@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/validate-binary-search-tree/
-from typing import Optional
 
 from tree import TreeNode
 
@@ -14,7 +12,7 @@ def inorder(root, visit):
 
 
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+    def isValidBST(self, root: TreeNode | None) -> bool:
         seq = []
 
         def visit(node):

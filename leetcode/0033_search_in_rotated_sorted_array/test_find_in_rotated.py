@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from find_in_rotated import Solution

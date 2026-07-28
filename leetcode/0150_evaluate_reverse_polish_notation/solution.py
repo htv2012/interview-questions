@@ -1,7 +1,5 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/evaluate-reverse-polish-notation/
 import operator
-from typing import List
 
 
 def div(left, right):
@@ -11,7 +9,7 @@ def div(left, right):
 
 
 class Solution:
-    def evalRPN(self, tokens: List[str]) -> int:
+    def evalRPN(self, tokens: list[str]) -> int:
         binary_operators = {
             "+": operator.add,
             "-": operator.sub,

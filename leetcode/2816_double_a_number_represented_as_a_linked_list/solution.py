@@ -1,10 +1,8 @@
-from typing import Optional
-
 from list_node import ListNode
 
 
 class Solution:
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def reverseList(self, head: ListNode | None) -> ListNode | None:
         prev_node, current_node = None, head
         while current_node:
             next_node = current_node.next
@@ -13,7 +11,7 @@ class Solution:
             current_node = next_node
         return prev_node
 
-    def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def doubleIt(self, head: ListNode | None) -> ListNode | None:
         head = self.reverseList(head)
         carry = 0
         node = head
