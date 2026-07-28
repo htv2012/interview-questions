@@ -1,7 +1,4 @@
 def has_cycle(head):
-    # if head is None:
-    # return 0
-
     fast = slow = head
     steps = 0
     while fast is not None:
