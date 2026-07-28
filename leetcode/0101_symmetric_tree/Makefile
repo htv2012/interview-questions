@@ -1,5 +1,5 @@
 test: lint
-	PYTHONPATH=../common pytest -s -vv
+	PYTHONPATH=../../_common pytest -s -vv
 
 lint: format
 	ruff check . --fix
@@ -9,4 +9,4 @@ format:
 	isort .
 
 sandbox:
-	PYTHONPATH=../common python -i sandbox.py
+	PYTHONPATH=../../_common python -i sandbox.py

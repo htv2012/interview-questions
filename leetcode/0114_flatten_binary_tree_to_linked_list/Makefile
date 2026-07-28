@@ -1,9 +1,9 @@
 test: lint
-	PYTHONPATH=../common pytest -s -vv
+	PYTHONPATH=../../_common pytest -s -vv
 
 lint: format
-	PYTHONPATH=../common ruff check . --fix
+	PYTHONPATH=../../_common ruff check . --fix
 
 format:
-	PYTHONPATH=../common black *.py
-	PYTHONPATH=../common isort .
+	PYTHONPATH=../../_common black *.py
+	PYTHONPATH=../../_common isort .
