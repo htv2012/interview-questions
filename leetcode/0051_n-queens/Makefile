@@ -1,18 +1,18 @@
 quick: lint
-	PYTHONPATH=../common pytest -s -vv -m 'not slow'
+	PYTHONPATH=../../_common pytest -s -vv -m 'not slow'
 
 slow: lint
-	PYTHONPATH=../common pytest -s -vv -m 'slow'
+	PYTHONPATH=../../_common pytest -s -vv -m 'slow'
 
 all: lint
-	PYTHONPATH=../common pytest -s -vv . ../common
+	PYTHONPATH=../../_common pytest -s -vv . ../../_common
 
 lint: format
-	ruff check . ../common --fix
+	ruff check . ../.._common --fix
 
 format:
-	ruff format . ../common
-	ruff check --select I --fix . ../common
+	ruff format . ../.._common
+	ruff check --select I --fix . ../../_common
 
 sandbox: lint
-	PYTHONPATH=../common python -i sandbox.py
+	PYTHONPATH=../../_common python -i sandbox.py

@@ -1,7 +1,8 @@
 import itertools
 import logging
 
-logging.basicConfig(level="DEBUG")
+# logging.basicConfig(level="DEBUG")
+logger = logging.getLogger()
 
 
 class Node:
@@ -49,7 +50,7 @@ def iter_list(node):
 def create_multi_tier(values):
     values = iter(values)
     head = from_iter(values)
-    logging.debug("in multi tier, head=%r", head)
+    logger.debug("in multi tier, head=%r", head)
     if head is None:
         return
     node = head
@@ -58,7 +59,7 @@ def create_multi_tier(values):
             values = itertools.chain([value], values)
             break
         node = node.next
-    logging.debug("in multi tier, node=%r", node)
+    logger.debug("in multi tier, node=%r", node)
     node.child = create_multi_tier(values)
     return head
 

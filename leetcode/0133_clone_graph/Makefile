@@ -1,9 +1,31 @@
-test: lint
-	PYTHONPATH=../common pytest -s -vv
+.PHONY: all clean install lab lint py run test
 
+### Default target(s)
+all: test
+
+### Perform static analysis
 lint:
-	ruff check --select I --fix . ../common
-	ruff check . --fix . ../common
+	uv run ruff check --select I --fix . --quiet
+	uv run ruff format . --quiet
+	uv run ruff check . --fix --quiet
 
-sandbox:
-	PYTHONPATH=../common python -i sandbox.py
+### Run unit tests
+test: lint
+	PYTHONPATH=../../_common uv run pytest -s -vv
+
+### Clean up generated files
+clean:
+	uv clean
+	rm -fr .ruff_cache .venv
+
+### Start a Python interpreter
+py:
+	uv run ipython
+
+### Start a Jupyter Lab
+lab:
+	uv run jupyter lab
+
+### Install this tool locally
+install:
+	uv tool install --upgrade .

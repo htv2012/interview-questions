@@ -1,13 +1,11 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/
-from typing import Optional
 
 from list_node import ListNode
 from tree import TreeNode
 
 
 class Solution:
-    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+    def sortedListToBST(self, head: ListNode | None) -> TreeNode | None:
         # Shortcuts, could be optimized later
         if head is None:
             return None
@@ -38,5 +36,5 @@ class Solution:
         return TreeNode(mid.val, left=left_tree, right=right_tree)
 
 
-def build(head: Optional[ListNode]) -> Optional[TreeNode]:
+def build(head: ListNode | None) -> TreeNode | None:
     return Solution().sortedListToBST(head)

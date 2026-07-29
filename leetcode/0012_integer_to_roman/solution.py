@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 class Solution:
     def intToRoman(self, num: int) -> str:
         """1 <= num <= 3999"""

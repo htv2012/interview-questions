@@ -1,5 +1,4 @@
 import itertools
-from typing import List
 
 
 def normalize(word):
@@ -7,7 +6,7 @@ def normalize(word):
 
 
 class Solution:
-    def removeAnagrams(self, words: List[str]) -> List[str]:
+    def removeAnagrams(self, words: list[str]) -> list[str]:
         out = []
         for _, group in itertools.groupby(words, key=normalize):
             out.append(next(group))

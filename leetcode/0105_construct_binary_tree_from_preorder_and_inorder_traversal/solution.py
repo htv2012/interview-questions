@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
-from typing import List, Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+    def buildTree(self, preorder: list[int], inorder: list[int]) -> TreeNode | None:
         if not preorder:
             return None
 

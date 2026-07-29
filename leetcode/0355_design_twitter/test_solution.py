@@ -5,6 +5,8 @@ import pytest
 
 from solution import Twitter
 
+logger = logging.getLogger()
+
 Step = collections.namedtuple("Step", ["action", "args", "expected"])
 
 
@@ -29,9 +31,9 @@ Step = collections.namedtuple("Step", ["action", "args", "expected"])
 def test_solution(steps):
     obj = None
     for index, (action, args, expected) in enumerate(steps):
-        logging.debug("============================================================")
+        logger.debug("============================================================")
         args_str = ", ".join(str(arg) for arg in args)
-        logging.debug(
+        logger.debug(
             "Step [%d]: %s(%s), expected: %r", index, action, args_str, expected
         )
 
@@ -42,5 +44,3 @@ def test_solution(steps):
             assert method is not None
             actual = method(*args)
             assert actual == expected
-
-        # logging.debug("obj=%r", obj)

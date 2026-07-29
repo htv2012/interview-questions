@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/binary-tree-level-order-traversal/description/
-from typing import List, Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrder(self, root: TreeNode | None) -> list[list[int]]:
         out = []
         queue = [(root, 0)]
 

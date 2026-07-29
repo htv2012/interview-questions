@@ -1,18 +1,16 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/palindrome-linked-list/description/?envType=daily-question&envId=2024-03-13
-from typing import Optional
 
 from list_node import ListNode
 
 
 class Solution:
-    def values(self, head: Optional[ListNode]):
+    def values(self, head: ListNode | None):
         node = head
         while node is not None:
             yield node.val
             node = node.next
 
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+    def isPalindrome(self, head: ListNode | None) -> bool:
         if head is None or head.next is None:
             return True
 

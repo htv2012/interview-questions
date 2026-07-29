@@ -1,6 +1,3 @@
-import pysnooper
-
-
 class MyCircularQueue:
     def __init__(self, k: int):
         self.data = k * [None]
@@ -46,7 +43,6 @@ class MyCircularQueue:
         index = (self.ip - self.length) % self.capacity
         return self.data[index]
 
-    @pysnooper.snoop("/tmp/snoop.txt")
     def Rear(self) -> int:
         if self.isEmpty():
             return -1

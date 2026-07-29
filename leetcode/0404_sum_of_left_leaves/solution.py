@@ -1,11 +1,10 @@
 import collections
-from typing import Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+    def sumOfLeftLeaves(self, root: TreeNode | None) -> int:
         out = 0
         queue = collections.deque([(root, None)])
 

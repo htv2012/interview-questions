@@ -1,5 +1,7 @@
 import logging
 
+logger = logging.getLogger()
+
 
 def easy_solution(text: str) -> str:
     return " ".join(word[::-1] for word in text[::-1].split())
@@ -15,15 +17,15 @@ def hard_solution(text: str) -> str:
         elif word:
             if out:
                 out.append(" ")
-            logging.debug("word=%r", word)
-            logging.debug("out=%r", out)
+            logger.debug("word=%r", word)
+            logger.debug("out=%r", out)
             out.extend(word)
             word = ""
     if word:
         if out:
             out.append(" ")
         out.extend(word)
-    logging.debug("final out=%r", out)
+    logger.debug("final out=%r", out)
 
     result = ""
     while out:

@@ -1,8 +1,7 @@
-from typing import List
 
 
 class Solution:
-    def minimumBoxes(self, apple: List[int], capacity: List[int]) -> int:
+    def minimumBoxes(self, apple: list[int], capacity: list[int]) -> int:
         apples_count = sum(apple)
         capacity.sort(reverse=True)
         for boxes_count, box_capacity in enumerate(capacity, 1):

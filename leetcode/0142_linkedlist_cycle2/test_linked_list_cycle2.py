@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from linked_list_cycle2 import Solution

@@ -1,11 +1,8 @@
-#!/usr/bin/env python3
-from typing import Optional
-
 from list_node import ListNode
 
 
 class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
+    def hasCycle(self, head: ListNode | None) -> bool:
         # Corner case
         if head is None or head.next is None:
             return False

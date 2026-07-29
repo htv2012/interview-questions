@@ -4,14 +4,14 @@
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "python.autoComplete.extraPaths": ["$(workspaceFolder)/../common"],
+    "python.autoComplete.extraPaths": ["$(workspaceFolder)/../../_common"],
     "terminal.integrated.env.osx": {
-        "PYTHONPATH": "$(workspaceFolder)/../common"
+        "PYTHONPATH": "$(workspaceFolder)/../../_common"
     },
     "terminal.integrated.env.linux": {
-        "PYTHONPATH": "$(workspaceFolder)/../common"
+        "PYTHONPATH": "$(workspaceFolder)/../../_common"
     },
     "terminal.integrated.env.windows": {
-        "PYTHONPATH": "$(workspaceFolder)/../common"
+        "PYTHONPATH": "$(workspaceFolder)/../../_common"
     },
 }

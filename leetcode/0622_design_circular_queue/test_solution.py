@@ -4,6 +4,8 @@ import pytest
 
 from solution import MyCircularQueue
 
+logger = logging.getLogger()
+
 
 @pytest.mark.parametrize(
     "actions, args_list, expected_values",
@@ -56,10 +58,10 @@ def test_solution(actions, args_list, expected_values):
         else:
             method = getattr(queue, action)
             actual = method(*args)
-            assert (
-                actual == expected
-            ), f"[{index}] {action}({', '.join(str(arg) for arg in args)})"
-        logging.debug(
+            assert actual == expected, (
+                f"[{index}] {action}({', '.join(str(arg) for arg in args)})"
+            )
+        logger.debug(
             "[%d] %s(%s) => %r",
             index,
             action,

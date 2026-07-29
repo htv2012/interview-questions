@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import pytest
 
 from reverse_nodes_in_k_groups import ListNode, Solution

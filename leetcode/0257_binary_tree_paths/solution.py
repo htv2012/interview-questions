@@ -1,11 +1,10 @@
 import collections
-from typing import List, Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+    def binaryTreePaths(self, root: TreeNode | None) -> list[str]:
         queue = collections.deque([(root, tuple())])
         out = []
 

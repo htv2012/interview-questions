@@ -1,8 +1,9 @@
 import collections
 import logging
-from typing import List, Optional
 
 from tree import TreeNode
+
+logger = logging.getLogger()
 
 
 def breadth_first_iter(node: TreeNode, level: int = 0):
@@ -17,10 +18,10 @@ def breadth_first_iter(node: TreeNode, level: int = 0):
 
 
 class Solution:
-    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrderBottom(self, root: TreeNode | None) -> list[list[int]]:
         out = []
         for node, level in breadth_first_iter(root):
-            logging.debug("node=%r, level=%d", node, level)
+            logger.debug("node=%r, level=%d", node, level)
             while level >= len(out):
                 out.append([])
             out[level].append(node.val)

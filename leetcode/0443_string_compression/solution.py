@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def compress(self, chars: List[str]) -> int:
+    def compress(self, chars: list[str]) -> int:
         writer = 0
         reader = 0
         bound = len(chars)

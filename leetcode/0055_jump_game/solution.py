@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
 # https://leetcode.com/problems/jump-game/description/
-from typing import List
 
 
 class Solution:
-    def canJump(self, nums: List[int]) -> bool:
+    def canJump(self, nums: list[int]) -> bool:
         target = len(nums) - 1
         furthest = 0
         for index, reach in enumerate(nums):

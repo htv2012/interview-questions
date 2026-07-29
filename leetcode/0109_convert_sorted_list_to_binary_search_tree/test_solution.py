@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import list_node
 import pytest
 import tree

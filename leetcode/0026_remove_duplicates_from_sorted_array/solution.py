@@ -1,9 +1,5 @@
-#!/usr/bin/env python3
-from typing import List
-
-
 class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
+    def removeDuplicates(self, nums: list[int]) -> int:
         i = 0
         it = iter(nums)
         next(it)
