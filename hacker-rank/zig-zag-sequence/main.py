@@ -16,4 +16,3 @@ def findZigZagSequence(a, n):
             print(a[i])
         else:
             print(a[i], end=" ")
-    return

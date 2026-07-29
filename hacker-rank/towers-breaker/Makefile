@@ -3,22 +3,15 @@
 ### Default target(s)
 all: test
 
-edit:
-	$(EDITOR) main.py
-
 ### Perform static analysis
 lint:
-	uv run ruff check --select I --fix .
-	uv run ruff format .
-	uv run ruff check . --fix
-
-### Run the project
-run: lint
-	uv run main.py
+	uv run ruff check --select I --fix . --quiet
+	uv run ruff format . --quiet
+	uv run ruff check . --fix --quiet
 
 ### Run unit tests
 test: lint
-	uv run pytest -s -v
+	PYTHONPATH=../common uv run pytest -s -vv
 
 ### Clean up generated files
 clean:
@@ -33,3 +26,6 @@ py:
 lab:
 	uv run jupyter lab
 
+### Install this tool locally
+install:
+	uv tool install --upgrade .
