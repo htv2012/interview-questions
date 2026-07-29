@@ -18,7 +18,7 @@ run: lint
 
 ### Run unit tests
 test: lint
-	PYTHONPATH=../../leetcode/common uv run pytest -s -v
+	uv run pytest -s -v
 
 ### Clean up generated files
 clean:

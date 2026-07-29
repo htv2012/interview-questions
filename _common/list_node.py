@@ -12,6 +12,14 @@ class ListNode:
     def __repr__(self):
         return f"<ListNode {self.val}>"
 
+    @property
+    def data(self):
+        return self.val
+
+    @data.setter
+    def data(self, val):
+        self.val = val
+
     def __iter__(self):
         node = self
         while node is not None:
