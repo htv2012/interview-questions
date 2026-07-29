@@ -1,5 +1,3 @@
-
-
 class Solution:
     def averageWaitingTime(self, customers: list[list[int]]) -> float:
         total_wait_times = 0

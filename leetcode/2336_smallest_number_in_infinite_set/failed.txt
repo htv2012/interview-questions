@@ -1,0 +1,12 @@
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set
+./leetcode/2336_smallest_number_in_infinite_set

@@ -1,0 +1,11 @@
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal
+./leetcode/0589_n-ary_tree_preorder_traversal

@@ -1,5 +1,6 @@
-import graph
 import pytest
+
+import graph
 
 
 @pytest.mark.parametrize(

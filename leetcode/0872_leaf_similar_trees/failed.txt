@@ -1,0 +1,11 @@
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees
+./leetcode/0872_leaf_similar_trees

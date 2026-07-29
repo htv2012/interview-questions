@@ -1,0 +1,11 @@
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer
+./leetcode/2485_find_the_pivot_integer

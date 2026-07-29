@@ -1,0 +1,11 @@
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku
+./leetcode/0036_valid_sudoku

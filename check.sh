@@ -19,8 +19,7 @@ while IFS= read -r makefile; do
     set +x
     make
     if [ $? -ne 0 ]; then
-        echo "ERROR in $projectDir"
-        break
+        echo "$projectDir" >> failed.txt
     fi
     cd "$top"
 done

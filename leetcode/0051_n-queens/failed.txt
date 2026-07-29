@@ -1,0 +1,11 @@
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens
+./leetcode/0051_n-queens

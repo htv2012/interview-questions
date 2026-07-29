@@ -1,5 +1,3 @@
-
-
 class Solution:
     def minimumBoxes(self, apple: list[int], capacity: list[int]) -> int:
         apples_count = sum(apple)
