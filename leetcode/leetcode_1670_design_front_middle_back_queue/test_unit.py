@@ -16,25 +16,25 @@ def test_push_front(que):
     assert que.mid == 100
     assert que.back == 100
 
-    que.pushFront(200)
+    que.pushFront(200)  # que: 200 100
     assert len(que) == 2
     assert que.front == 200
-    assert que.mid == 100
+    assert que.mid == 200
     assert que.back == 100
 
-    que.pushFront(300)
+    que.pushFront(300)  # que: 300 200 100
     assert len(que) == 3
     assert que.front == 300
     assert que.mid == 200
     assert que.back == 100
 
-    que.pushFront(400)
+    que.pushFront(400)  # que: 400 300 200 100
     assert len(que) == 4
     assert que.front == 400
-    assert que.mid == 200
+    assert que.mid == 300
     assert que.back == 100
 
-    que.pushFront(500)
+    que.pushFront(500)  # que: 500 400 300 200 100
     assert len(que) == 5
     assert que.front == 500
     assert que.mid == 300
@@ -50,23 +50,29 @@ def test_push_back(que):
     assert que.mid == 100
     assert que.back == 100
 
-    que.pushBack(200)
+    que.pushBack(200)  # que: 100 200
     assert len(que) == 2
     assert que.front == 100
-    assert que.mid == 200
+    assert que.mid == 100
     assert que.back == 200
 
-    que.pushBack(300)
+    que.pushBack(300)  # que: 100 200 300
     assert len(que) == 3
     assert que.front == 100
     assert que.mid == 200
     assert que.back == 300
 
-    que.pushBack(400)
+    que.pushBack(400)  # que: 100 200 300 400
     assert len(que) == 4
     assert que.front == 100
-    assert que.mid == 300
+    assert que.mid == 200
     assert que.back == 400
+
+    que.pushBack(500)  # que: 100 200 300 400 500
+    assert len(que) == 5
+    assert que.front == 100
+    assert que.mid == 300
+    assert que.back == 500
 
 
 def test_pop_front(que):
@@ -78,16 +84,22 @@ def test_pop_front(que):
 
     assert que.popFront() == 100
     assert len(que) == 4
+
     assert que.popFront() == 200
     assert len(que) == 3
+
     assert que.popFront() == 300
     assert len(que) == 2
+
     assert que.popFront() == 400
     assert len(que) == 1
+
     assert que.popFront() == 500
     assert len(que) == 0
+
     assert que.popFront() == NOT_FOUND
     assert len(que) == 0
+
     assert que.popBack() == NOT_FOUND
     assert len(que) == 0
 
@@ -101,15 +113,21 @@ def test_pop_back(que):
 
     assert que.popBack() == 500
     assert len(que) == 4
+
     assert que.popBack() == 400
     assert len(que) == 3
+
     assert que.popBack() == 300
     assert len(que) == 2
+
     assert que.popBack() == 200
     assert len(que) == 1
+
     assert que.popBack() == 100
     assert len(que) == 0
+
     assert que.popBack() == NOT_FOUND
     assert len(que) == 0
+
     assert que.popBack() == NOT_FOUND
     assert len(que) == 0

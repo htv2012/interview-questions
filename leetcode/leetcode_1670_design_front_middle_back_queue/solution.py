@@ -55,20 +55,16 @@ class FrontMiddleBackQueue:
         return node.val
 
     def popMiddle(self) -> int:
-        node = self._get_mid()
-        if node is None:
-            return NOT_FOUND
-
-        # BUG: _front _back might be changed
-        self._len -= 1
         if self._len == 0:
-            self._front = self._back = None
-        else:
-            left, right = node.left, node.right
-            if left:
-                left.right = right
-            if right:
-                right.left = left
+            return NOT_FOUND
+        elif self._len < 3:
+            return self.popFront()
+
+        node = self._get_mid()
+        self._len -= 1
+        left, right = node.left, node.right
+        left.right = right
+        right.left = left
 
         return node.val
 
@@ -103,8 +99,11 @@ class FrontMiddleBackQueue:
         return self._back.val if self._back else NOT_FOUND
 
     def _get_mid(self):
+        if self._len == 0:
+            return None
+
         node = self._front
-        for _ in range(self._len // 2):
+        for _ in range((self._len - 1) // 2):
             node = node.right
         return node
 
