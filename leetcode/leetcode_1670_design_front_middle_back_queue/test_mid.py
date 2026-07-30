@@ -1,0 +1,80 @@
+from solution import NOT_FOUND, FrontMiddleBackQueue
+
+
+def que_of(n: int):
+    que = FrontMiddleBackQueue()
+    for val in range(n):
+        que.pushBack(val + 1)
+    return que  # 1 2 3 ...
+
+
+def test_pop_mid(que):
+    for val in range(5):
+        que.pushBack(val)
+    assert len(que) == 5
+    assert list(que) == [0, 1, 2, 3, 4]
+
+    assert que.popMiddle() == 2
+    assert len(que) == 4
+    assert list(que) == [0, 1, 3, 4]
+
+    assert que.popMiddle() == 1
+    assert len(que) == 3
+    assert list(que) == [0, 3, 4]
+
+    assert que.popMiddle() == 3
+    assert len(que) == 2
+    assert list(que) == [0, 4]
+
+    assert que.popMiddle() == 0
+    assert len(que) == 1
+    assert list(que) == [4]
+
+    assert que.popMiddle() == 4
+    assert len(que) == 0
+    assert list(que) == []
+
+    assert que.popMiddle() == NOT_FOUND
+    assert len(que) == 0
+    assert list(que) == []
+
+    assert que.popMiddle() == NOT_FOUND
+    assert len(que) == 0
+    assert list(que) == []
+
+
+def test_pop_mid2():
+    """Stated in the description"""
+    que = que_of(6)
+    assert len(que) == 6
+    assert list(que) == [1, 2, 3, 4, 5, 6]
+
+    assert que.popMiddle() == 3
+    assert len(que) == 5
+    assert list(que) == [1, 2, 4, 5, 6]
+
+
+def test_push_mid(que):
+    que.pushMiddle(1)
+    assert len(que) == 1
+    assert list(que) == [1]
+
+    que.pushMiddle(2)
+    assert len(que) == 2
+    assert list(que) == [2, 1]
+
+    que.pushMiddle(3)
+    assert len(que) == 3
+    assert list(que) == [2, 3, 1]
+
+    que.pushMiddle(4)
+    assert len(que) == 4
+    assert list(que) == [2, 4, 3, 1]
+
+    que.pushMiddle(5)
+    assert len(que) == 5
+    assert list(que) == [2, 4, 5, 3, 1]
+
+    que.pushMiddle(6)
+    assert len(que) == 6
+    assert list(que) == [2, 4, 6, 5, 3, 1]
