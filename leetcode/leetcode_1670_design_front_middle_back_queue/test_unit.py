@@ -1,11 +1,4 @@
-import pytest
-
-from solution import NOT_FOUND, FrontMiddleBackQueue
-
-
-@pytest.fixture
-def que():
-    return FrontMiddleBackQueue()
+from solution import NOT_FOUND
 
 
 def test_init(que):
