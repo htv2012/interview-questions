@@ -1,7 +1,7 @@
 import json
 
 import pytest
-from common import tree
+import tree
 
 
 @pytest.mark.parametrize(

@@ -1,13 +1,12 @@
 # https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
-from typing import Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def flatten(self, root: Optional[TreeNode]) -> None:
+    def flatten(self, root: TreeNode | None) -> None:
         if root is None:
-            return None
+            return
 
         left_tree, right_tree = root.left, root.right
         self.flatten(left_tree)

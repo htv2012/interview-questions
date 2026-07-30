@@ -6,11 +6,7 @@ class BrowserHistory:
 
     def __repr__(self):
         return (
-            f"{self.__class__.__name__}("
-            f"here={self.here!r}"
-            f", "
-            f"history={self.history!r}"
-            f")"
+            f"{self.__class__.__name__}(here={self.here!r}, history={self.history!r})"
         )
 
     def visit(self, url: str) -> None:

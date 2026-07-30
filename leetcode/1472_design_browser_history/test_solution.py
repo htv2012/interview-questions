@@ -1,6 +1,8 @@
 import collections
 import logging
 
+logger = logging.getLogger()
+
 import pytest
 
 from solution import BrowserHistory
@@ -32,11 +34,9 @@ Step = collections.namedtuple("Step", ["action", "args", "expected"])
 def test_solution(steps):
     obj = None
     for index, (action, args, expected) in enumerate(steps):
-        logging.debug("============================================================")
+        logger.debug("============================================================")
         args_str = ", ".join(str(arg) for arg in args)
-        logging.debug(
-            "Step [%d] %s(%s), expected=%r", index, action, args_str, expected
-        )
+        logger.debug("Step [%d] %s(%s), expected=%r", index, action, args_str, expected)
 
         if action == "BrowserHistory":
             obj = BrowserHistory(*args)
@@ -46,4 +46,4 @@ def test_solution(steps):
             actual = method(*args)
             assert actual == expected
 
-        logging.debug("obj=%r", obj)
+        logger.debug("obj=%r", obj)

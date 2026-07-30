@@ -1,5 +1,7 @@
 import logging
 
+logger = logging.getLogger()
+
 import pytest
 
 from solution import SmallestInfiniteSet
@@ -19,7 +21,7 @@ Implement the SmallestInfiniteSet class:
     int popSmallest() Removes and returns the smallest integer contained in the infinite set.
     void addBack(int num) Adds a positive integer num back into the infinite set, if it is not already in the infinite set.
 
- 
+
 
 Example 1:
 
@@ -41,7 +43,7 @@ smallestInfiniteSet.popSmallest(); // return 1, since 1 was added back to the se
 smallestInfiniteSet.popSmallest(); // return 4, and remove it from the set.
 smallestInfiniteSet.popSmallest(); // return 5, and remove it from the set.
 
- 
+
 
 Constraints:
 
@@ -79,11 +81,11 @@ def test_solution(action_list, args_list, expected_list):
     for index, (action, args, expected) in enumerate(
         zip(action_list, args_list, expected_list)
     ):
-        logging.debug("============================================================")
-        logging.debug(
+        logger.debug("============================================================")
+        logger.debug(
             "Step [%d] %s(%s)", index, action, ", ".join(str(arg) for arg in args)
         )
-        logging.debug("expected=%r", expected)
+        logger.debug("expected=%r", expected)
 
         if action == "SmallestInfiniteSet":
             obj = SmallestInfiniteSet(*args)
@@ -91,5 +93,5 @@ def test_solution(action_list, args_list, expected_list):
             method = getattr(obj, action)
             assert method is not None
             actual = method(*args)
-            logging.debug("actual  =%r", expected)
+            logger.debug("actual  =%r", expected)
             assert actual == expected

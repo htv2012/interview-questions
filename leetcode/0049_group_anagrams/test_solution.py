@@ -42,6 +42,7 @@ Constraints:
 
 
 """
+logger = logging.getLogger()
 
 
 @pytest.mark.parametrize(
@@ -60,6 +61,6 @@ def test_solution(fut, indata, expected):
     actual = fut(indata)
     expected = {frozenset(group) for group in expected}
     actual = {frozenset(group) for group in actual}
-    logging.debug("actual=%r", actual)
-    logging.debug("expected=%r", expected)
+    logger.debug("actual=%r", actual)
+    logger.debug("expected=%r", expected)
     assert actual == expected

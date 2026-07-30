@@ -1,4 +1,3 @@
-from typing import List
 
 
 def count_land_neighbors(g: list[list[int]], row, col):
@@ -15,7 +14,7 @@ def count_land_neighbors(g: list[list[int]], row, col):
 
 
 class Solution:
-    def islandPerimeter(self, grid: List[List[int]]) -> int:
+    def islandPerimeter(self, grid: list[list[int]]) -> int:
         perimeter = 0
 
         for row_index, row in enumerate(grid):

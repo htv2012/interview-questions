@@ -1,5 +1,4 @@
 import contextlib
-from typing import Optional
 
 
 class ListNode:
@@ -44,7 +43,7 @@ class ListNode:
 
 
 class Solution:
-    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def reverseKGroup(self, head: ListNode | None, k: int) -> ListNode | None:
         # Edge case: k < 2
         if k < 2:
             return head

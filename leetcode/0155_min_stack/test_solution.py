@@ -5,6 +5,8 @@ import pytest
 
 from solution import MinStack
 
+logger = logging.getLogger()
+
 Step = collections.namedtuple("Step", ["action", "args", "expected"])
 Entry = collections.namedtuple("E", ["val", "min"])
 
@@ -31,10 +33,10 @@ def test_solution(steps):
     obj = None
 
     for index, (action, args, expected) in enumerate(steps):
-        logging.debug("============================================================")
+        logger.debug("============================================================")
         args_str = ", ".join(str(arg) for arg in args)
-        logging.debug("Step [%d] %s(%s)", index, action, args_str)
-        logging.debug("expected=%r", expected)
+        logger.debug("Step [%d] %s(%s)", index, action, args_str)
+        logger.debug("expected=%r", expected)
 
         if action == "MinStack":
             obj = MinStack(*args)
@@ -42,7 +44,7 @@ def test_solution(steps):
             method = getattr(obj, action)
             assert method is not None
             actual = method(*args)
-            logging.debug("actual  =%r", expected)
+            logger.debug("actual  =%r", expected)
             assert actual == expected
 
-        logging.debug("obj: %r", obj)
+        logger.debug("obj: %r", obj)

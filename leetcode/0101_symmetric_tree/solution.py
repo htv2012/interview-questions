@@ -1,5 +1,4 @@
 # https://leetcode.com/problems/symmetric-tree/description/
-from typing import Optional
 
 from tree import TreeNode
 
@@ -17,5 +16,5 @@ def mirror_compare(root1, root2):
 
 
 class Solution:
-    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+    def isSymmetric(self, root: TreeNode | None) -> bool:
         return mirror_compare(root.left, root.right)

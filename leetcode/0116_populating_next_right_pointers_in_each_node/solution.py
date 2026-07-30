@@ -1,5 +1,4 @@
 import collections
-from typing import Optional
 
 
 class Node:
@@ -10,7 +9,7 @@ class Node:
         self.next = next
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(" f"val={self.val!r}" f")"
+        return f"{self.__class__.__name__}(val={self.val!r})"
 
 
 def breadth_first_iter(node: Node, level: int = 0):
@@ -25,7 +24,7 @@ def breadth_first_iter(node: Node, level: int = 0):
 
 
 class Solution:
-    def connect(self, root: "Optional[Node]") -> "Optional[Node]":
+    def connect(self, root: "Node | None") -> "Node | None":
         last_level: Node = -1
         last_node: Node = None
 

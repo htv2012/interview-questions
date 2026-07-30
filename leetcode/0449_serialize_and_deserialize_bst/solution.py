@@ -1,6 +1,5 @@
 import collections
 import json
-from typing import Optional
 
 from tree import TreeNode
 
@@ -45,13 +44,13 @@ def breadth_first_bst_build(seq):
 
 
 class Codec:
-    def serialize(self, root: Optional[TreeNode]) -> str:
+    def serialize(self, root: TreeNode | None) -> str:
         """Encodes a tree to a single string."""
         values = [node.val for node, _ in breadth_first_iter(root)]
         out = json.dumps(values)
         return out
 
-    def deserialize(self, data: str) -> Optional[TreeNode]:
+    def deserialize(self, data: str) -> TreeNode | None:
         """Decodes your encoded data to tree."""
         values = json.loads(data)
         root = breadth_first_bst_build(values)

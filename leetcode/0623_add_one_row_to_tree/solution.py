@@ -1,13 +1,10 @@
 from queue import SimpleQueue
-from typing import Optional
 
-from common.tree import TreeNode
+from tree import TreeNode
 
 
 class Solution:
-    def addOneRow(
-        self, root: Optional[TreeNode], val: int, depth: int
-    ) -> Optional[TreeNode]:
+    def addOneRow(self, root: TreeNode | None, val: int, depth: int) -> TreeNode | None:
         if depth == 1:
             return TreeNode(val=val, left=root)
 

@@ -1,11 +1,10 @@
 # https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
-from typing import Optional
 
 from list_node import ListNode
 
 
 class Solution:
-    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def deleteDuplicates(self, head: ListNode | None) -> ListNode | None:
         current_node = head
         while current_node is not None:
             next_node = current_node

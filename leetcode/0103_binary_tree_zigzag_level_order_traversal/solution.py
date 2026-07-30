@@ -1,11 +1,10 @@
 # https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
-from typing import List, Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def zigzagLevelOrder(self, root: TreeNode | None) -> list[list[int]]:
         out = []
         queue = [(root, 0)]
 

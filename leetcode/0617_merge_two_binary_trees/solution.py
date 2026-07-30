@@ -1,13 +1,12 @@
 import collections
-from typing import Optional
 
 from tree import TreeNode
 
 
 class Solution:
     def mergeTrees(
-        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
-    ) -> Optional[TreeNode]:
+        self, root1: TreeNode | None, root2: TreeNode | None
+    ) -> TreeNode | None:
         if root1 is None and root2 is None:
             return None
         elif root1 is None:

@@ -1,10 +1,9 @@
-from typing import Optional
 
 from tree import TreeNode
 
 
 class Solution:
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+    def isSameTree(self, p: TreeNode | None, q: TreeNode | None) -> bool:
         if p is None and q is None:
             return True
         try:

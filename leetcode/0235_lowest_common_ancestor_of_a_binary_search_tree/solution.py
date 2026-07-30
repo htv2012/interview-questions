@@ -1,19 +1,19 @@
 from tree import TreeNode
 
 
-def find(root: "TreeNode", target: "TreeNode", path: tuple = tuple()) -> tuple:
+def find(root: "TreeNode", target: "TreeNode", path: tuple = ()) -> tuple:
     if root is None:
-        return tuple()
+        return ()
 
     path = path + (root,)
     if root.val == target.val:
         return path
-    elif found := find(root.left, target, path):
-        return found
-    elif found := find(root.right, target, path):
+    elif (found := find(root.left, target, path)) or (
+        found := find(root.right, target, path)
+    ):
         return found
     else:
-        return tuple()
+        return ()
 
 
 class Solution:

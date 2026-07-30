@@ -19,7 +19,7 @@ while IFS= read -r makefile; do
     set +x
     make
     if [ $? -ne 0 ]; then
-        echo "$projectDir" >> failed.txt
+        echo "$projectDir" >> "$top/failed.txt"
     fi
     cd "$top"
 done

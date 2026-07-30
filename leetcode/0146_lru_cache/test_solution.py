@@ -1,5 +1,7 @@
 import logging
 
+logger = logging.getLogger()
+
 import pytest
 
 from solution import LRUCache
@@ -21,11 +23,11 @@ def test_solution(action_list, args_list, expected_list):
     for index, (action, args, expected) in enumerate(
         zip(action_list, args_list, expected_list)
     ):
-        logging.debug("============================================================")
-        logging.debug(
+        logger.debug("============================================================")
+        logger.debug(
             "Step [%d] %s(%s)", index, action, ", ".join(str(arg) for arg in args)
         )
-        logging.debug("expected=%r", expected)
+        logger.debug("expected=%r", expected)
 
         if action == "LRUCache":
             obj = LRUCache(*args)
@@ -33,5 +35,5 @@ def test_solution(action_list, args_list, expected_list):
             method = getattr(obj, action)
             assert method is not None
             actual = method(*args)
-            logging.debug("actual=%r", actual)
+            logger.debug("actual=%r", actual)
             assert actual == expected

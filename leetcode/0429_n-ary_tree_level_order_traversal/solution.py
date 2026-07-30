@@ -1,11 +1,10 @@
 import collections
-from typing import List
 
 from nary_tree import Node
 
 
 class Solution:
-    def levelOrder(self, root: "Node") -> List[List[int]]:
+    def levelOrder(self, root: "Node") -> list[list[int]]:
         queue = collections.deque()
         queue.append((root, 0))
         out = []

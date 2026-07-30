@@ -42,7 +42,7 @@ class Trie:
 # param_3 = obj.startsWith(prefix)
 
 t = Trie()
-words = "code leet cat car catalog do done dot".split()
+words = ["code", "leet", "cat", "car", "catalog", "do", "done", "dot"]
 print(f"{words=}")
 for word in words:
     t.insert(word)

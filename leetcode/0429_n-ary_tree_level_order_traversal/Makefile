@@ -1,15 +1,31 @@
-quick: lint
-	PYTHONPATH=../../_common pytest -s -vv -m 'not slow'
+.PHONY: all clean install lab lint py run test
 
-slow: lint
-	PYTHONPATH=../../_common pytest -s -vv -m 'slow'
+### Default target(s)
+all: test
 
-all: lint
-	PYTHONPATH=../../_common pytest -s -vv . ../../_common
+### Perform static analysis
+lint:
+	uv run ruff check --select I --fix . --quiet
+	uv run ruff format . --quiet
+	uv run ruff check . --fix --quiet
 
-lint: format
-	ruff check . ../.._common --fix
+### Run unit tests
+test: lint
+	PYTHONPATH=../common uv run pytest -s -vv
 
-format:
-	ruff format . ../.._common
-	ruff check --select I --fix . ../../_common
+### Clean up generated files
+clean:
+	uv clean
+	rm -fr .ruff_cache .venv
+
+### Start a Python interpreter
+py:
+	uv run ipython
+
+### Start a Jupyter Lab
+lab:
+	uv run jupyter lab
+
+### Install this tool locally
+install:
+	uv tool install --upgrade .

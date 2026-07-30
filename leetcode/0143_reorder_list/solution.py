@@ -1,5 +1,4 @@
 import collections
-from typing import Optional
 
 # import pysnooper
 from list_node import ListNode
@@ -7,7 +6,7 @@ from list_node import ListNode
 
 # @pysnooper.snoop("/tmp/snoop.txt")
 class Solution:
-    def reorderList(self, head: Optional[ListNode]) -> None:
+    def reorderList(self, head: ListNode | None) -> None:
         """
         Do not return anything, modify head in-place instead.
         """

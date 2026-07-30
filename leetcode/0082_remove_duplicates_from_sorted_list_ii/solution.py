@@ -1,10 +1,9 @@
-from typing import Optional
 
 from list_node import ListNode
 
 
 class Solution:
-    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def deleteDuplicates(self, head: ListNode | None) -> ListNode | None:
         dummy = tail = ListNode()
         while head is not None:
             # Count the number of nodes with the same value

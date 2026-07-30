@@ -1,5 +1,6 @@
 import logging
-from typing import List
+
+logger = logging.getLogger()
 
 
 def find_target(nums, target):
@@ -18,7 +19,7 @@ def find_target(nums, target):
 def find_first(nums, target, left, right):
     while left < right:
         mid = (left + right) // 2
-        logging.debug(
+        logger.debug(
             "nums=%r, target=%r, left=%r, mid=%r, right=%r",
             nums,
             target,
@@ -36,7 +37,7 @@ def find_first(nums, target, left, right):
 def find_last(nums, target, left, right):
     while left <= right:
         mid = (left + right) // 2
-        logging.debug("find_last: left=%r, mid=%r, right=%r", left, mid, right)
+        logger.debug("find_last: left=%r, mid=%r, right=%r", left, mid, right)
         if nums[mid] == target:
             left = mid + 1
         else:
@@ -54,5 +55,5 @@ def search_range(nums: list[int], target: int, left: int, right: int) -> list:
 
 
 class Solution:
-    def searchRange(self, nums: List[int], target: int) -> List[int]:
+    def searchRange(self, nums: list[int], target: int) -> list[int]:
         return search_range(nums, target, left=0, right=len(nums) - 1)

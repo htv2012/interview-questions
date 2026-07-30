@@ -1,8 +1,5 @@
 import pytest
 
-target = 2
-[1, 5, 6, 0, 0, 1]
-
 
 @pytest.mark.parametrize(
     "nums, target, expected",

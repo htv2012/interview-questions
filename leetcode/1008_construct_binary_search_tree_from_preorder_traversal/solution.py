@@ -1,5 +1,4 @@
 # https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/
-from typing import List, Optional
 
 from tree import TreeNode
 
@@ -26,7 +25,7 @@ def from_pre(preorder, from_index, to_index):
 
 
 class Solution:
-    def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
+    def bstFromPreorder(self, preorder: list[int]) -> TreeNode | None:
         return from_pre(
             preorder=preorder,
             from_index=0,

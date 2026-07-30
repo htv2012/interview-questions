@@ -1,9 +1,8 @@
 # https://leetcode.com/problems/plus-one/description/
-from typing import List
 
 
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
+    def plusOne(self, digits: list[int]) -> list[int]:
         carry = 1
         out = []
 

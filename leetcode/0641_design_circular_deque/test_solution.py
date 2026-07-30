@@ -5,6 +5,8 @@ import pytest
 
 from solution import MyCircularDeque
 
+logger = logging.getLogger()
+
 Step = collections.namedtuple("Step", ["action", "args", "expected"])
 
 
@@ -52,13 +54,13 @@ Step = collections.namedtuple("Step", ["action", "args", "expected"])
 def test_solution(steps):
     queue = None
     for index, step in enumerate(steps):
-        logging.debug(
+        logger.debug(
             "================================================================================"
         )
-        logging.debug("Step %r", step)
+        logger.debug("Step %r", step)
 
         if step.action == "MyCircularDeque":
-            logging.debug("[%d] MyCircularDeque(%d)", index, step.args[0])
+            logger.debug("[%d] MyCircularDeque(%d)", index, step.args[0])
             queue = MyCircularDeque(*step.args)
         else:
             method = getattr(queue, step.action)
@@ -66,12 +68,12 @@ def test_solution(steps):
             actual = method(*step.args)
 
             args_str = ", ".join(str(x) for x in step.args)
-            msg = "[%d] %s(%s)" % (index, step.action, args_str)
-            logging.debug("[%d] %s(%s) => %r", index, step.action, args_str, actual)
+            msg = f"[{index}] {step.action}({args_str})"
+            logger.debug("[%d] %s(%s) => %r", index, step.action, args_str, actual)
 
             assert actual == step.expected, msg
 
-        logging.debug("Queue: %r", queue)
+        logger.debug("Queue: %r", queue)
 
 
 def test_empty():

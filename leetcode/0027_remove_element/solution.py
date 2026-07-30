@@ -1,9 +1,8 @@
 # https://leetcode.com/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150
-from typing import List
 
 
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
+    def removeElement(self, nums: list[int], val: int) -> int:
         left = 0
         right = len(nums) - 1
         while left <= right:

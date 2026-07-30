@@ -11,7 +11,7 @@ lint:
 
 ### Run unit tests
 test: lint
-	PYTHONPATH=../../_common uv run pytest -s -vv
+	PYTHONPATH=../common uv run pytest -s -vv
 
 ### Clean up generated files
 clean:

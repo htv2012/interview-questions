@@ -5,7 +5,7 @@ from tree import TreeNode
 
 class Solution:
     def binaryTreePaths(self, root: TreeNode | None) -> list[str]:
-        queue = collections.deque([(root, tuple())])
+        queue = collections.deque([(root, ())])
         out = []
 
         while queue:

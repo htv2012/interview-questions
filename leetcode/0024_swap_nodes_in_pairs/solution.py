@@ -1,10 +1,9 @@
-from typing import Optional
 
 from linked_list import ListNode
 
 
 class Solution:
-    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def swapPairs(self, head: ListNode | None) -> ListNode | None:
         if head is None:
             return None
         if head.next is None:

@@ -1,5 +1,7 @@
 import logging
 
+logger = logging.getLogger()
+
 import pytest
 
 
@@ -14,8 +16,8 @@ import pytest
     ],
 )
 def test_solution(fut, arr, expected):
-    logging.debug("arr=%r", arr)
-    logging.debug("expected=%r", expected)
+    logger.debug("arr=%r", arr)
+    logger.debug("expected=%r", expected)
     actual = fut(arr)
-    logging.debug("actual=%r", actual)
+    logger.debug("actual=%r", actual)
     assert actual is expected

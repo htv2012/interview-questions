@@ -9,7 +9,7 @@ class MinStack:
         self.data: collections.deque = collections.deque()
 
     def __repr__(self):
-        return f"{self.__class__.__name__}(" f"data={self.data!r}" f")"
+        return f"{self.__class__.__name__}(data={self.data!r})"
 
     def push(self, val: int) -> None:
         if self.data:

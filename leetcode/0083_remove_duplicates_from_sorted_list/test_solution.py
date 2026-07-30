@@ -3,6 +3,8 @@ import logging
 import pytest
 from list_node import ListNode, assert_values
 
+logger = logging.getLogger()
+
 
 @pytest.mark.parametrize(
     "head, expected",
@@ -13,8 +15,8 @@ from list_node import ListNode, assert_values
 )
 def test_solution(fut, head, expected):
     head = ListNode.from_iterable(head)
-    logging.debug("head=%r", head)
+    logger.debug("head=%r", head)
     actual = fut(head)
-    logging.debug("actual=%r", actual)
-    logging.debug("expected=%r", expected)
+    logger.debug("actual=%r", actual)
+    logger.debug("expected=%r", expected)
     assert_values(actual, expected)
