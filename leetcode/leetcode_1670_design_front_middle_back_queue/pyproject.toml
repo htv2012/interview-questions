@@ -1,0 +1,19 @@
+[project]
+name = "leetcode-1670"
+version = "0.1.0"
+description = "Design Front Middle Back Queue"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pudb>=2025.1.5",
+    "pytest>=9.1.1",
+    "ruff>=0.16.0",
+    "ty>=0.0.65",
+]
+[tool.pytest.ini_options]
+pythonpath=[".", "../common"]
+log_cli="true"
+log_level="WARN"
