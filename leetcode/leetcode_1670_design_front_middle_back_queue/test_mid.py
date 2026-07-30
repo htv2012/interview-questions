@@ -39,8 +39,34 @@ def test_pop_mid(que):
 def test_get_mid(que):
     assert que._get_mid() is None
 
-    que.pushBack(100)
+    que.pushBack(100)  # que: 100
     assert que._get_mid().val == 100
 
-    que.pushBack(200)
+    que.pushBack(200)  # que: 100 200
     assert que._get_mid().val == 100
+
+    que.pushBack(300)  # que: 100 200 300
+    assert que._get_mid().val == 200
+
+    que.pushBack(400)  # que: 100 200 300 400
+    assert que._get_mid().val == 200
+
+    que.pushBack(500)  # que: 100 200 300 400 500
+    assert que._get_mid().val == 300
+
+    que.pushBack(600)  # que: 100 200 300 400 500 600
+    assert que._get_mid().val == 300
+
+
+def test_push_mid(que):
+    que.pushMiddle(1)
+    assert len(que) == 1
+    assert list(que) == [1]
+
+    que.pushMiddle(2)  # 2 1
+    assert len(que) == 2
+    assert list(que) == [2, 1]
+
+    que.pushMiddle(3)  # 3 2 1
+    assert len(que) == 3
+    assert list(que) == [3, 2, 1]

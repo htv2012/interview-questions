@@ -12,7 +12,11 @@ lint:
 
 ### Run unit tests
 test: lint
-	uv run pytest -s -v
+	uv run pytest -s -vv
+
+### Debug
+debug:
+	PYTHONBREAKPOINT=pudb.set_trace uv run pytest -s -vv
 
 ### Start a Python interpreter
 py:

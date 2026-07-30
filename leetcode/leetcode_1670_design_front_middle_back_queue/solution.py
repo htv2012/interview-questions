@@ -28,7 +28,20 @@ class FrontMiddleBackQueue:
         self._len += 1
 
     def pushMiddle(self, val: int) -> None:
-        pass
+        if self._len < 2:
+            self.pushFront(val)
+            return
+
+        mid = self._get_mid()
+        node = QueNode(val)
+
+        node.right = mid
+        mid.left = node
+
+        node.left = mid.left
+        mid.left.right = node
+
+        self._len += 1
 
     def pushBack(self, val: int) -> None:
         node = QueNode(val)
