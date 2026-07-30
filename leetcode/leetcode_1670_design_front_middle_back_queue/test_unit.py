@@ -95,3 +95,28 @@ def test_pop_front(que):
     assert len(que) == 0
     assert que.popFront() == NOT_FOUND
     assert len(que) == 0
+    assert que.popBack() == NOT_FOUND
+    assert len(que) == 0
+
+
+def test_pop_back(que):
+    values = [100, 200, 300, 400, 500]
+    for val in values:
+        que.pushBack(val)
+    assert list(que) == values
+    assert len(que) == 5
+
+    assert que.popBack() == 500
+    assert len(que) == 4
+    assert que.popBack() == 400
+    assert len(que) == 3
+    assert que.popBack() == 300
+    assert len(que) == 2
+    assert que.popBack() == 200
+    assert len(que) == 1
+    assert que.popBack() == 100
+    assert len(que) == 0
+    assert que.popBack() == NOT_FOUND
+    assert len(que) == 0
+    assert que.popBack() == NOT_FOUND
+    assert len(que) == 0

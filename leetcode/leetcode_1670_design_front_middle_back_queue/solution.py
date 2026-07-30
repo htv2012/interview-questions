@@ -41,21 +41,35 @@ class FrontMiddleBackQueue:
         self._len += 1
 
     def popFront(self) -> int:
-        if self._len == 0:
+        node = self._front
+        if node is None:
             return NOT_FOUND
 
-        node = self._front
-        self._front = node.right
-        if self._front:
-            self._front.left = None
         self._len -= 1
+        if self._len == 0:
+            self._front = self._back = None
+        else:
+            self._front = node.right
+            self._front.left = None
+
         return node.val
 
     def popMiddle(self) -> int:
         pass
 
     def popBack(self) -> int:
-        return self._back.pop()
+        node = self._back
+        if node is None:
+            return NOT_FOUND
+
+        self._len -= 1
+        if self._len == 0:
+            self._front = self._back = None
+        else:
+            self._back = node.left
+            self._back.right = None
+
+        return node.val
 
     # ======================================================================
     # Support
@@ -83,7 +97,7 @@ class FrontMiddleBackQueue:
         return self._len
 
     def __repr__(self):
-        return f"<Q len: {self._len}, front: {self._front}, mid: {self._mid}, back: {self._back}>"
+        return f"<Q len: {self._len}, front: {self._front}, back: {self._back}>"
 
     def __iter__(self):
         node = self._front
