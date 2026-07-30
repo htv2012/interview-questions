@@ -1,4 +1,11 @@
-from solution import NOT_FOUND
+from solution import NOT_FOUND, FrontMiddleBackQueue
+
+
+def que_of(n: int):
+    que = FrontMiddleBackQueue()
+    for val in range(n):
+        que.pushBack(val + 1)
+    return que  # 1 2 3 ...
 
 
 def test_pop_mid(que):
@@ -34,6 +41,17 @@ def test_pop_mid(que):
     assert que.popMiddle() == NOT_FOUND
     assert len(que) == 0
     assert list(que) == []
+
+
+def test_pop_mid2():
+    """Stated in the description"""
+    que = que_of(6)
+    assert len(que) == 6
+    assert list(que) == [1, 2, 3, 4, 5, 6]
+
+    assert que.popMiddle() == 3
+    assert len(que) == 5
+    assert list(que) == [1, 2, 4, 5, 6]
 
 
 def test_push_mid(que):
