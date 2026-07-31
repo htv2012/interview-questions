@@ -8,21 +8,22 @@ NULL = "#"
 
 def is_valid(tokens: list[str]) -> bool:
     logger.debug(f"is_valid({tokens})")
-    if tokens == [NULL]:
-        return True
-    elif len(tokens) == 2:
-        return False
 
-    que = []
+    stack = []
     for token in tokens:
-        que.append(token)
-        logger.debug(f"{que=}")
-        if len(que) > 2 and que[-1] == NULL and que[-2] == NULL and que[-3] != NULL:
-            logger.debug(f"Leaf found: {que}")
-            que[-3:] = [NULL]
-            logger.debug(f"  que becomes {que}")
+        stack.append(token)
+        logger.debug(f"{stack=}")
+        while (
+            len(stack) > 2
+            and stack[-1] == NULL
+            and stack[-2] == NULL
+            and stack[-3] != NULL
+        ):
+            logger.debug(f"Leaf found: {stack}")
+            stack[-3:] = [NULL]
+            logger.debug(f"  stack becomes {stack}")
 
-    return is_valid(que)
+    return stack == [NULL]
 
 
 class Solution:
