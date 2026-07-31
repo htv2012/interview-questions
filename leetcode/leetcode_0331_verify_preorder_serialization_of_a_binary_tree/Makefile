@@ -1,4 +1,4 @@
-.PHONY: all clean install lab lint py run test
+.PHONY: all lab lint py test
 
 ### Default target(s)
 all: test
@@ -9,14 +9,10 @@ lint:
 	uv run ruff format . --quiet
 	uv run ruff check . --fix --quiet
 
+
 ### Run unit tests
 test: lint
-	PYTHONPATH=../../_common uv run pytest -s -vv
-
-### Clean up generated files
-clean:
-	uv clean
-	rm -fr .ruff_cache .venv
+	uv run pytest -s -v
 
 ### Start a Python interpreter
 py:
@@ -26,6 +22,3 @@ py:
 lab:
 	uv run jupyter lab
 
-### Install this tool locally
-install:
-	uv tool install --upgrade .
