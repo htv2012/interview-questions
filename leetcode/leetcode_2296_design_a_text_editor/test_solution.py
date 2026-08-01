@@ -2,6 +2,8 @@
 https://leetcode.com/problems/design-a-text-editor/
 """
 
+import itertools
+
 import pytest
 
 from solution import TextEditor
@@ -46,15 +48,23 @@ def tc(**kwargs):
                 "practi",
             ],
         ),
+        tc(
+            test_id="Move left too many chars",
+            actions=["TextEditor", "addText", "cursorLeft"],
+            args_list=[[], ["leetcode"], [40]],
+            expected_return=[None, None, ""],
+        ),
     ],
 )
 def test_solution(actions, args_list, expected_return):
     editor = TextEditor()
 
-    for action, args, expected in zip(actions, args_list, expected_return):
+    for i, action, args, expected in zip(
+        itertools.count(), actions, args_list, expected_return
+    ):
         if action == "TextEditor":
             continue
 
         method = getattr(editor, action)
         actual = method(*args)
-        assert actual == expected
+        assert actual == expected, f"[{i}] {action}({', '.join(repr(x) for x in args)})"
