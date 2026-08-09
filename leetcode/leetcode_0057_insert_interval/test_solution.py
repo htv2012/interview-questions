@@ -83,5 +83,4 @@ def tc(id, **kwargs):
     ],
 )
 def test_solution(fut, intervals, newInterval, expected):
-    #    assert fut(intervals, newInterval) == expected
-    pass
+    assert fut(intervals, newInterval) == expected
