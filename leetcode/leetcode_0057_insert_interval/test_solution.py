@@ -80,6 +80,12 @@ def tc(id, **kwargs):
             newInterval=[4, 7],
             expected=[[1, 3], [4, 9]],
         ),
+        tc(
+            "Example 2",
+            intervals=[[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],
+            newInterval=[4, 11],
+            expected=[[1, 2], [3, 11], [12, 16]],
+        ),
     ],
 )
 def test_solution(fut, intervals, newInterval, expected):

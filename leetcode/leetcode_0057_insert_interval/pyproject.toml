@@ -15,5 +15,7 @@ dev = [
 ]
 [tool.pytest.ini_options]
 pythonpath=[".", "../../_common"]
-log_cli="true"
-log_level="DEBUG"
+log_cli = "true"
+log_level = "WARNING"
+log_file = "/tmp/leet0057.log"
+log_file_level = "DEBUG"
