@@ -1,0 +1,23 @@
+[project]
+name = "leetcode-0365"
+version = "0.1.0"
+description = "Water and Jug Problem"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pudb>=2025.1.5",
+    "pytest>=9.1.1",
+    "ruff>=0.16.3",
+    "ty>=0.0.71",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "../../_common"]
+
+log_cli = true
+log_cli_level = "WARNING"
+log_file = "/tmp/leetcode-0365.log"
+log_file_level = "DEBUG"
