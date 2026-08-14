@@ -17,4 +17,4 @@ from solution import Solution
 )
 def test_solution(x, y, target, expected):
     sol = Solution()
-    assert sol.canMeasureWater(x, y, target) == expected
+    assert sol.canMeasureWater(x, y, target) is expected
