@@ -1,0 +1,23 @@
+[project]
+name = "leetcode-1971"
+version = "0.1.0"
+description = "Find if Path Exists in Graph"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pudb>=2025.1.5",
+    "pytest>=9.1.1",
+    "ruff>=0.16.3",
+    "ty>=0.0.72",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "../../_common"]
+
+log_cli = true
+log_cli_level = "WARNING"
+log_file = "/tmp/leetcode-1971.log"
+log_file_level = "DEBUG"
