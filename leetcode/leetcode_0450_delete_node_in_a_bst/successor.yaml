@@ -1,0 +1,12 @@
+-
+  test_id: empty tree
+  root: []
+  expected: [[], [], null]
+-
+  test_id: single node
+  root: [1000]
+  expected: [[], [1000], "right"]
+-
+  test_id: happy path
+  root: [1000, 500, 2000, null, null, 1500, 3000, 1200, 1800, null, null, 1100, 1300]
+  expected: [[1100], [1200, 1100, 1300], "left"]
