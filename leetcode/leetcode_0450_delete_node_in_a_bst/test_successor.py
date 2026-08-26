@@ -4,8 +4,8 @@ https://leetcode.com/problems/delete-node-in-a-bst/
 
 import tree
 
-from testlib import parametrize
 from solution import get_inorder_successor
+from testlib import parametrize
 
 
 @parametrize("successor.yaml", ["root", "expected"])

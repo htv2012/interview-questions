@@ -16,6 +16,6 @@ dev = [
     "ty>=0.0.56",
 ]
 [tool.pytest.ini_options]
-pythonpath=[".", "../common"]
+pythonpath=[".", "../../common"]
 log_cli="true"
 log_level="DEBUG"

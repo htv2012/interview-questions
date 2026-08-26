@@ -5,8 +5,8 @@ https://leetcode.com/problems/delete-node-in-a-bst/
 import pytest
 import tree
 
-from testlib import log_tree, parametrize
 from solution import Solution
+from testlib import log_tree, parametrize
 
 
 @pytest.fixture
