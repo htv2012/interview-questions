@@ -1,0 +1,21 @@
+[project]
+name = "find-merge-point-of-two-lists"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "ipython>=9.15.0",
+    "pytest>=9.1.1",
+    "ruff>=0.16.0",
+]
+
+
+[tool.pytest.ini_options]
+pythonpath=["../../_common"]
+log_cli = true
+log_cli_level = "DEBUG"
+

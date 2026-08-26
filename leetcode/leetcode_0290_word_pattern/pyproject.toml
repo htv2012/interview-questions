@@ -1,0 +1,19 @@
+[project]
+name = "leetcode-0290"
+version = "0.1.0"
+description = "Word Pattern"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pudb>=2025.1.5",
+    "pytest>=9.1.1",
+    "ruff>=0.16.1",
+    "ty>=0.0.68",
+]
+[tool.pytest.ini_options]
+pythonpath=[".", "../../_common"]
+log_cli="true"
+log_level="WARNING"
