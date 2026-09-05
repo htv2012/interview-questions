@@ -1,0 +1,23 @@
+[project]
+name = "leetcode-0289"
+version = "0.1.0"
+description = "Game of Life"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pudb>=2025.1.5",
+    "pytest>=9.1.1",
+    "ruff>=0.16.6",
+    "ty>=0.0.78",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "../../_common"]
+
+log_cli = false
+log_cli_level = "DEBUG"
+log_file = "/tmp/leetcode-0289.log"
+log_file_level = "DEBUG"
