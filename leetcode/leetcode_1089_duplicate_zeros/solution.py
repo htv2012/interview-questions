@@ -5,32 +5,37 @@ logger = logging.getLogger()
 
 class Solution:
     def duplicateZeros(self, arr: list[int]) -> None:
-        # Count number of zeros
-        zeros_count = 0
-        stop = -1
-        for i, num in enumerate(arr):
-            if num == 0:
-                zeros_count += 1
-                if stop == -1:
-                    stop = i
-
-        arr_len = len(arr)
-        logger.debug(f"{arr = }, {arr_len = }")
-        logger.debug(f"{zeros_count = }")
-        logger.debug(f"{stop = }")
-        if zeros_count == 0 or zeros_count == arr_len:
+        size = len(arr)
+        logger.debug(f"{size = }, {arr = }")
+        if size < 2:
             return
 
-        src = arr_len - 1
-        dest = arr_len + zeros_count
+        # Simulate copy to determine source and destination indices
+        # for copying from right to left
+        source = 0
+        dest = 0
+        for source, value in enumerate(arr):
+            dest += 1
+            if value == 0:
+                dest += 1
 
-        while src >= stop:
-            if dest < arr_len:
-                arr[dest] = arr[src]
-            logger.debug(f"copying arr[{src}]={arr[src]} to arr[{dest}], {arr = }")
-            src -= 1
+            if dest >= size:
+                dest -= 1
+                break
+
+        logger.debug(f"{source = }, {dest = }")
+
+        # Actual copy, take care not to copy out of bound
+        while source >= 0:
+            # copy
+            if dest < size:
+                arr[dest] = arr[source]
             dest -= 1
 
-            if arr[src + 1] == 0 and dest < arr_len:
-                arr[dest] = 0
+            # copy again if source contains 0
+            if arr[source] == 0:
+                if dest < size:
+                    arr[dest] = arr[source]
                 dest -= 1
+
+            source -= 1
