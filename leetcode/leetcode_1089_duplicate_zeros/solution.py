@@ -6,7 +6,6 @@ class Solution:
 
         zeros_count = arr.count(0)
         size = len(arr)
-
         for source in range(size - 1, -1, -1):
             copy()
             if arr[source] == 0:
