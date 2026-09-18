@@ -1,8 +1,3 @@
-import logging
-
-logger = logging.getLogger()
-
-
 class Solution:
     def duplicateZeros(self, arr: list[int]) -> None:
         zeros_count = arr.count(0)
