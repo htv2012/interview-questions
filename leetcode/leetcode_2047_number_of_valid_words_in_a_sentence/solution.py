@@ -14,14 +14,13 @@ def is_valid(word: str):
     if hypen_count > 1:
         return 0
     elif hypen_count == 1:
-        try:
-            i = word.index(HYPHEN)
-            assert i != 0 and i != last_index
-            assert (
-                word[i - 1] in string.ascii_lowercase
-                and word[i + 1] in string.ascii_lowercase
-            )
-        except (AssertionError, IndexError):
+        i = word.index(HYPHEN)
+        if (
+            i == 0
+            or i == last_index
+            or word[i - 1] not in string.ascii_lowercase
+            or word[i + 1] not in string.ascii_lowercase
+        ):
             return 0
 
     # Check: Punctuations
