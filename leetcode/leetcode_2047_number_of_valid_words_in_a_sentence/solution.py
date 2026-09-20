@@ -10,7 +10,6 @@ PUNCTUATIONS = set("!,.")
 
 
 def is_valid(word: str):
-    # breakpoint()
     # Check: At most one hypen and it must be sourrounded by lowercase characters
     hypen_count = word.count(HYPHEN)
     if hypen_count > 1:
@@ -27,6 +26,7 @@ def is_valid(word: str):
             logger.debug(f"Hypen not surrounded by lower case letter: {word!r}")
             return 0
 
+    # Check: Punctuations
     punctuations_count = 0
     last_index = len(word) - 1
     valid = 1
