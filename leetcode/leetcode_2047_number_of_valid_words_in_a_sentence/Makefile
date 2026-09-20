@@ -14,7 +14,7 @@ debug:
 
 ### Edit files
 edit:
-	gvim $(VIM_FLAGS) Makefile pyproject.toml *.py
+	gvim $(VIM_FLAGS) solution.py test*.py
 
 ### Start a Jupyter Lab
 lab:
