@@ -1,4 +1,4 @@
-.PHONY: all clean install lab lint py run test
+.PHONY: all clean lab lint py run test edit
 
 ### Default target(s)
 all: test
@@ -27,5 +27,5 @@ lab:
 	uv run jupyter lab
 
 ### Install this tool locally
-install:
-	uv tool install --upgrade .
+edit:
+	gvim -p solution.py test_*.py

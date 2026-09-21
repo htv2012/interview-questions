@@ -1,6 +1,6 @@
 import pytest
 
-from three_sum import Solution
+from solution import Solution
 
 
 @pytest.fixture
