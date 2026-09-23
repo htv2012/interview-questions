@@ -1,8 +1,8 @@
 class Solution:
     def numOfPairs(self, nums: list[str], target: str) -> int:
         count = 0
-
         counter = {}
+
         for i, value in enumerate(nums):
             prefix = target.removesuffix(value)
             if prefix + value == target:
