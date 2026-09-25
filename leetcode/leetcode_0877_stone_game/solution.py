@@ -3,20 +3,20 @@ import functools
 
 class Solution:
     def stoneGame(self, piles: list[int]) -> bool:
-        @functools.lru_cache
+        @functools.cache
         def play(left, right, total):
             if left == right:
                 return piles[left]
             elif left + 1 == right:
                 return max(piles[left], piles[right])
             else:
-                path1 = total - play(left + 1, right, total - piles[left])
-                if path1 > threshold:
-                    return path1
-                path2 = total - play(left, right - 1, total - piles[right])
-                if path2 > threshold:
-                    return path2
-                return max(path1, path2)
+                left_score = total - play(left + 1, right, total - piles[left])
+                if left_score > threshold:
+                    return left_score
+                right_score = total - play(left, right - 1, total - piles[right])
+                if right_score > threshold:
+                    return right_score
+                return max(left_score, right_score)
 
         max_score = sum(piles)
         threshold = max_score // 2
