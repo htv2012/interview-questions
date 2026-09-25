@@ -7,16 +7,16 @@ class Solution:
         def play(left, right, total):
             if left == right:
                 return piles[left]
-            elif left + 1 == right:
-                return max(piles[left], piles[right])
-            else:
-                left_score = total - play(left + 1, right, total - piles[left])
-                if left_score > threshold:
-                    return left_score
-                right_score = total - play(left, right - 1, total - piles[right])
-                if right_score > threshold:
-                    return right_score
-                return max(left_score, right_score)
+
+            left_score = total - play(left + 1, right, total - piles[left])
+            if left_score > threshold:
+                return left_score
+
+            right_score = total - play(left, right - 1, total - piles[right])
+            if right_score > threshold:
+                return right_score
+
+            return max(left_score, right_score)
 
         max_score = sum(piles)
         threshold = max_score // 2
